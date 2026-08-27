@@ -1,7 +1,68 @@
 <!DOCTYPE html>
-<html>
-    <body>
-        <h1>Hello World</h1>
-        <p>I'm hosted with GitHub Pages.</p>
-    </body>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Patricia Serrano</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Cabecera principal -->
+    <header class="hero">
+        <h1>Patricia Serrano Angorrilla</h1>
+        <h2>Ingeniera especialista en Transformación Digital</h2>
+        <p>patserang99@gmail.com | (+34) 693 061 723</p>
+    </header>
+
+    <!-- Contenedor principal estilo "tarjetas" (similar a componentes) -->
+    <main class="container">
+    
+    <!-- Sobre mí --------------------------------------------------->
+        <section class="card">
+            <h3>Sobre mí</h3>
+            <p>¡Hola! Soy Patricia.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin condimentum, nisi sit amet convallis elementum, felis massa ultricies massa, et bibendum nisi mauris ac nulla. Aenean nec ante aliquet, hendrerit metus ut, ornare urna. Vivamus eget semper urna, sit amet finibus ligula. Nam eleifend at eros non congue. Fusce finibus ultrices est, ac convallis odio finibus id. Mauris eu sem mauris. Integer sem dui, sagittis nec tincidunt eget, malesuada non enim. Pellentesque dignissim sit amet ipsum vitae porttitor. Mauris viverra dui nisl, a maximus turpis sagittis dignissim.</p>
+            <p>Nam gravida posuere mi. Proin eget bibendum nibh, a varius ex. Maecenas egestas elementum mi, nec dictum tortor laoreet vitae. Integer imperdiet ligula lectus, mattis mattis arcu sollicitudin a. Praesent luctus neque sed dolor efficitur vehicula. Nunc mattis libero quis ipsum blandit laoreet. Morbi a sem nisi. Nam pretium turpis in urna iaculis consectetur. Fusce in gravida nibh. Sed sed diam nibh.</p>
+        </section>
+    <!-- Experiencia profesional ------------------------------------>
+        <section class="card">
+            <h3>Experiencia Profesional</h3>
+            <div class="job-item">
+                <h4>Mirafutura Ingeniería S.L.</h4>
+                <p class="date">Enero 2025 - Actualidad</p>
+                <p>Responsable del Departamento de Digitalización e I+D. Desarrollo de bases de datos, automatización de procesos e integración de sistemas industriales.</p>
+            </div>
+            <div class="job-item">
+                <h4>ARUS Andalucía Racing Team</h4>
+                <p class="date">Septiembre 2024 - Agosto 2025</p>
+                <p>Ingeniera electrónica en el desarrollo y validación experimental de PCBs para el Sistema de Gestión de Batería (BMS).</p>
+            </div>
+        </section>
+    <!-- Botón interactivo -------------------------------------------->
+        <section class="card interactive-card">
+            <h3>Sobre mi enfoque técnico</h3>
+            <p id="info-text">Haz clic en el botón para ver una de mis especialidades principales.</p>
+            <button id="action-btn">Ver especialidad</button>
+        </section>
+    <!-- Mascota ------------------------------------------------------>
+        <div id="mascota-contenedor" class="oculto">
+        <!-- Imagen o icono de la mascota (puedes usar un emoji, un SVG o una imagen) -->
+        <div class="mascota-avatar">👩‍💻</div>
+        <!-- El cuadro de diálogo donde aparecerán los mensajes -->
+        <div class="mascota-dialogo" id="mascota-mensaje">
+            ¡Hola! Soy PatBot, tu guía personal por este CV interactivo.
+        </div>
+    </div>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2026 Patricia Serrano Angorrilla</p>
+    </footer>
+
+    <!-- Archivo de JavaScript básico -->
+    <script src="js/main.js"></script>
+</body>
 </html>

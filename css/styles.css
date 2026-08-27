@@ -1,0 +1,227 @@
+/* Estilos generales limpios y modernos */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+.hero {
+    background-color: rgba(250, 249, 246, 0.5);
+    backdrop-filter: blur(10px);
+    color: #1e293b;
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.hero h1 {
+    margin: 0 0 10px 0;
+    font-size: 2.2rem;
+}
+
+.hero h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    color: #94a3b8;
+    font-weight: normal;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Estilo de "tarjeta" simulando componentes independientes */
+.card {
+    background: white;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #0f172a;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+.job-item {
+    margin-bottom: 1rem;
+}
+
+.job-item h4 {
+    margin: 0;
+    color: #334155;
+}
+
+.date {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 0.3rem;
+}
+
+/* Estilos para la sección interactiva */
+.interactive-card {
+    text-align: center;
+}
+
+button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1rem;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+/* 🤖 ESTILOS DE LA MASCOTA 🤖 */
+#mascota-contenedor {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: flex-end;
+    z-index: 1000;
+    /* Transición para la aparición y desaparición */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#mascota-contenedor.oculto {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none; /* Evita que bloquee clics cuando está oculta */
+}
+
+.mascota-avatar {
+    font-size: 3rem;
+    background: #fff;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    margin-right: 15px;
+    cursor: pointer;
+    /* Animación sutil de "flotación" */
+    animation: flotar 2s ease-in-out infinite;
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.mascota-dialogo {
+    background: #2563eb;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 15px;
+    border-bottom-right-radius: 0; /* Estilo de bocadillo de diálogo */
+    max-width: 250px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    font-family: 'Comic Neue', cursive; /* Fuente amigable para los comentarios */
+    font-weight: 700;
+    position: relative;
+}
+
+/* La "colita" del bocadillo */
+.mascota-dialogo::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: -15px;
+    border-width: 10px 15px 10px 0;
+    border-style: solid;
+    border-color: transparent #2563eb transparent transparent;
+}
+
+/* ===== Fondo IA: Prisma de Datos + Barrido de Escaneo ===== */
+body {
+    background-color: #f5f7fa;
+    background-image: linear-gradient(115deg, transparent 42%, rgba(255,255,255,0.65) 50%, transparent 58%);
+    background-size: 260% 260%;
+    background-position: 0% 0%;
+    animation: escaneo 6s ease-in-out infinite;
+    position: relative;
+    overflow-x: hidden;
+}
+@keyframes escaneo {
+    0%   { background-position: 0% 0%; }
+    50%  { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+/* Capa 1: disco tipo prisma/radar, con bordes de color definidos, rotando */
+body::before {
+    content: '';
+    position: fixed;
+    top: -40%;
+    right: -25%;
+    width: 90vw;
+    height: 90vw;
+    max-width: 1100px;
+    max-height: 1100px;
+    background-image: conic-gradient(
+        from 0deg,
+        rgba(96, 165, 250, 0.45) 0deg 55deg,
+        transparent 55deg 75deg,
+        rgba(167, 139, 250, 0.42) 75deg 130deg,
+        transparent 130deg 150deg,
+        rgba(52, 211, 153, 0.40) 150deg 205deg,
+        transparent 205deg 225deg,
+        rgba(34, 211, 238, 0.38) 225deg 280deg,
+        transparent 280deg 300deg,
+        rgba(96, 165, 250, 0.45) 300deg 360deg
+    );
+    border-radius: 50%;
+    filter: blur(35px);
+    animation: girar 14s linear infinite;
+    z-index: -2;
+    pointer-events: none;
+}
+@keyframes girar {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Capa 2: manchas de tinta más saturadas y nítidas, mezcladas, movimiento rápido */
+body::after {
+    content: '';
+    position: fixed;
+    inset: -15%;
+    background-image:
+        radial-gradient(circle at 20% 70%, rgba(96, 165, 250, 0.55) 0%, transparent 34%),
+        radial-gradient(circle at 75% 80%, rgba(167, 139, 250, 0.50) 0%, transparent 32%),
+        radial-gradient(circle at 60% 15%, rgba(52, 211, 153, 0.45) 0%, transparent 30%);
+    filter: blur(38px);
+    mix-blend-mode: multiply;
+    animation: fluir-2 9s ease-in-out infinite reverse;
+    z-index: -1;
+    pointer-events: none;
+}
+@keyframes fluir-2 {
+    0%   { transform: translate(0, 0) scale(1); }
+    25%  { transform: translate(9%, -8%) scale(1.15); }
+    50%  { transform: translate(-5%, -10%) scale(0.88); }
+    75%  { transform: translate(-9%, 5%) scale(1.12); }
+    100% { transform: translate(0, 0) scale(1); }
+}

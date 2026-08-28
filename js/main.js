@@ -117,31 +117,43 @@ window.addEventListener('scroll', updateScrollEffects);
 window.addEventListener('load', updateScrollEffects);
 updateScrollEffects();
 
-// Datos de la experiencia profesional por empresa
+
+
+// Datos de experiencia profesional extraídos íntegramente del currículum
 const experienceData = {
-    empresa1: {
-        title: "Ingeniera de Automatización - TechCorp",
-        date: "2023 - Presente",
-        description: "Liderazgo en la implantación de herramientas digitales y optimización de flujos mediante IA para reducir tiempos operativos en un 40%."
+    mirafutura: {
+        title: "Responsable de Digitalización e I+D — Mirafutura Ingeniería S.L.",
+        date: "Enero 2025 - Actualidad",
+        description: "Liderazgo de proyectos de digitalización industrial, definición de hojas de ruta de Industria 4.0, automatización de flujos de trabajo, coordinación técnica con clientes y gestión de proyectos de I+D+i[cite: 1]."
     },
-    empresa2: {
-        title: "Consultora de Transformación Digital - InnovaSol",
-        date: "2021 - 2023",
-        description: "Diseño y despliegue de arquitectura en la nube para procesos industriales y automatización de reportes analíticos."
+    arus: {
+        title: "Ingeniera de Electrónica — ARUS Andalucía Racing Team",
+        date: "Septiembre 2024 - Agosto 2025",
+        description: "Diseño de PCBs para el Sistema de Gestión de Batería (BMS) de vehículo eléctrico de competición Formula Student, prototipado, ensamblaje y validación experimental bajo restricciones normativas estrictas[cite: 1]."
     },
-    empresa3: {
-        title: "Desarrolladora de Software - DataSystems",
-        date: "2019 - 2021",
-        description: "Creación de scripts avanzados y APIs conectadas a bases de datos relacionales para la monitorización de sistemas."
+    figroup: {
+        title: "Consultora Técnica de Proyectos I+D+i — Fi Group",
+        date: "Marzo 2024 - Septiembre 2024",
+        description: "Gestión y certificación de proyectos de I+D+i en sectores industriales de desarrollo de producto, redacción de memorias técnicas y defensa ante organismos públicos[cite: 1]."
     },
-    empresa4: {
-        title: "Junior Data Analyst - StartUp Lab",
-        date: "2018 - 2019",
-        description: "Análisis preliminar de datos operativos y soporte en la transición hacia entornos de trabajo digitalizados."
+    us: {
+        title: "Soporte Técnico Informático — Universidad de Sevilla",
+        date: "Octubre 2023 - Marzo 2024",
+        description: "Soporte técnico, mantenimiento de sistemas y gestión integral de incidencias de hardware y software en el Servicio Central de Informática[cite: 1]."
+    },
+    biotech: {
+        title: "Ingeniera de Desarrollo de Producto — Biotechnology and Healthcare Developments S.L.",
+        date: "Noviembre 2022 - Febrero 2023",
+        description: "Diseño y desarrollo de dispositivo electrónico médico (pulsioxímetro bluetooth) bajo estrictos estándares normativos de seguridad eléctrica y compatibilidad electromagnética[cite: 1]."
+    },
+    fidetia: {
+        title: "Investigadora en Bioelectrónica (Proyecto DeTecBio) — FIDETIA",
+        date: "Noviembre 2022 - Febrero 2023",
+        description: "Desarrollo de sistemas embebidos de bajo consumo para la adquisición de señales bioeléctricas en entornos de laboratorio e investigación aplicada[cite: 1]."
     }
 };
 
-// Control del Modal de Experiencia
+// Lógica para el control del cuadro de diálogo (Modal)
 const nodes = document.querySelectorAll('.path-node-html');
 const modal = document.getElementById('experience-modal');
 const modalClose = document.querySelector('.modal-close');

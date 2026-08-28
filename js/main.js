@@ -68,9 +68,17 @@ const scrollHint = document.querySelector('.scroll-hint');
 
 function updateScrollEffects() {
     const scrollPos = window.scrollY;
-    const heroHeight = heroSection.offsetHeight;
+    const heroHeight = heroSection ? heroSection.offsetHeight : 600;
 
-    // Desvanecimiento agresivo del indicador "desliza para descubrir" en los primeros 100px
+    // 1. Control del Hero: 100% nítido arriba y se desvanece suavemente al hacer scroll
+    if (heroSection) {
+        let heroOpacity = 1 - (scrollPos / (heroHeight * 0.5));
+        heroOpacity = Math.max(0, Math.min(1, heroOpacity));
+        heroSection.style.opacity = heroOpacity.toString();
+        heroSection.style.transform = `translateY(${scrollPos * 0.15}px)`;
+    }
+
+    // 2. Desvanecimiento del indicador "desliza para descubrir" en los primeros 100px
     if (scrollHint) {
         const fadeLimit = 100;
         let opacityCalc = 0.4 * (1 - Math.min(scrollPos, fadeLimit) / fadeLimit);
@@ -78,14 +86,16 @@ function updateScrollEffects() {
         scrollHint.style.transform = `translateX(-50%) translateY(${scrollPos * 0.3}px)`;
     }
 
-    // 1. Mostrar/Ocultar barra superior cuando sales del Hero
-    if (scrollPos > heroHeight * 0.7) {
-        topNavbar.classList.remove('hidden');
-    } else {
-        topNavbar.classList.add('hidden');
+    // 3. Mostrar/Ocultar barra superior cuando sales del Hero
+    if (topNavbar) {
+        if (scrollPos > heroHeight * 0.7) {
+            topNavbar.classList.remove('hidden');
+        } else {
+            topNavbar.classList.add('hidden');
+        }
     }
 
-    // 2. Efecto de desvanecimiento agresivo y opacidad 100% nítida en el centro
+    // 4. Efecto de desvanecimiento en las secciones de contenido
     contentSections.forEach(section => {
         const rect = section.getBoundingClientRect();
         const windowHeight = window.innerHeight;
@@ -97,15 +107,17 @@ function updateScrollEffects() {
         const threshold = windowHeight * 0.15; 
         const fadeRange = windowHeight * 0.2;
 
-        if (distanceFromCenter < threshold) {
+        if (scrollPos === 0) {
+            section.style.opacity = '1';
+            section.style.transform = 'translateY(0)';
+        } else if (distanceFromCenter < threshold) {
             section.style.opacity = '1';
             section.style.transform = 'translateY(0)';
         } else {
             let opacity = 1 - (distanceFromCenter - threshold) / fadeRange;
-            opacity = Math.max(0, Math.min(1, opacity));
+            opacity = Math.max(0.2, Math.min(1, opacity));
             
             section.style.opacity = opacity.toString();
-            
             let translateY = sectionCenter < screenCenter ? -40 : 40;
             section.style.transform = `translateY(${translateY * (1 - opacity)}px)`;
         }
@@ -117,9 +129,7 @@ window.addEventListener('scroll', updateScrollEffects);
 window.addEventListener('load', updateScrollEffects);
 updateScrollEffects();
 
-
-
-// Datos de experiencia profesional extraídos íntegramente del currículum
+// Datos de experiencia profesional extraídos íntegramente del currículum[cite: 1]
 const experienceData = {
     mirafutura: {
         title: "Responsable de Digitalización e I+D — Mirafutura Ingeniería S.L.",

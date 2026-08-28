@@ -47,6 +47,8 @@ body, html {
     display: flex;
     align-items: center;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    -webkit-mask-image: none;
+    mask-image: none;
 }
 
 .top-navbar.hidden {
@@ -84,7 +86,12 @@ body, html {
     position: relative;
 }
 
-/* Hero Section */
+/* Hero Section - 100% visible inicialmente sin máscara superior */
+.hero-section {
+    opacity: 1;
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
 .hero-container {
     display: flex;
     align-items: center;
@@ -94,7 +101,7 @@ body, html {
 
 .hero-text-content {
     flex: 1;
-    text-align: left; /* Todo alineado estrictamente a la izquierda */
+    text-align: left;
 }
 
 .eyebrow {
@@ -176,7 +183,7 @@ body, html {
     60% { transform: translateY(-3px) translateX(-50%); }
 }
 
-/* Secciones de Contenido (Sobre Mí, Experiencia) */
+/* Secciones de Contenido */
 .content-section {
     opacity: 0.2;
     transform: translateY(30px);
@@ -310,35 +317,27 @@ body, html {
     }
 }
 
-/* Efecto de desvanecimiento en los bordes superior e inferior */
+/* Efecto de desvanecimiento únicamente inferior en el body para mantener el Hero 100% nítido arriba */
 body {
     -webkit-mask-image: linear-gradient(
         to bottom,
-        transparent 0%,
-        black 15%,
+        black 0%,
         black 85%,
         transparent 100%
     );
     mask-image: linear-gradient(
         to bottom,
-        transparent 0%,
-        black 15%,
+        black 0%,
         black 85%,
         transparent 100%
     );
-}
-
-/* Asegurar que la barra de navegación superior fija no se desvanezca */
-.top-navbar {
-    -webkit-mask-image: none;
-    mask-image: none;
 }
 
 .path-container {
     position: relative;
     width: 100%;
     max-width: 900px;
-    aspect-ratio: 1000 / 400; /* Vincula la proporción exacta del viewBox del SVG */
+    aspect-ratio: 1000 / 400;
     margin: 3rem auto 0 auto;
 }
 
@@ -353,7 +352,7 @@ body {
 
 .path-node-html {
     position: absolute;
-    transform: translate(-50%, -50%); /* Centra perfectamente el nodo en sus coordenadas */
+    transform: translate(-50%, -50%);
     width: 52px;
     height: 52px;
     background: var(--surface-glass, #121218);
@@ -375,12 +374,12 @@ body {
 }
 
 .path-node-html:hover {
-    transform: translate(-50%, -50%) scale(1.2); /* Mantiene el centrado correcto al crecer */
+    transform: translate(-50%, -50%) scale(1.2);
     box-shadow: 0 0 20px var(--neon-purple);
     background: var(--surface-hover, #1f1f2e);
 }
 
-/* Estilos del modal (backdrop y ventana emergente) */
+/* Estilos del modal */
 .modal-backdrop {
     position: fixed;
     top: 0;

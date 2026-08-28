@@ -60,13 +60,13 @@ function renderTechBackground() {
 }
 renderTechBackground();
 
-/// Control de comportamiento al hacer scroll
+// Control de comportamiento al hacer scroll
 const topNavbar = document.getElementById('top-navbar');
 const heroSection = document.getElementById('hero');
 const contentSections = document.querySelectorAll('.content-section');
 const scrollHint = document.querySelector('.scroll-hint');
 
-window.addEventListener('scroll', () => {
+function updateScrollEffects() {
     const scrollPos = window.scrollY;
     const heroHeight = heroSection.offsetHeight;
 
@@ -79,21 +79,40 @@ window.addEventListener('scroll', () => {
     }
 
     // 1. Mostrar/Ocultar barra superior cuando sales del Hero
-    if (scrollPos > heroHeight * 0.7) { // <-- CAMBIA ESTE VALOR (antes era 0.4, ahora es 0.7 o más)
+    if (scrollPos > heroHeight * 0.7) {
         topNavbar.classList.remove('hidden');
     } else {
         topNavbar.classList.add('hidden');
     }
 
-    // 2. Activar efectos visuales de aparición para las secciones al hacer scroll
+    // 2. Efecto de desvanecimiento agresivo y opacidad 100% nítida en el centro
     contentSections.forEach(section => {
         const rect = section.getBoundingClientRect();
-        const triggerPoint = window.innerHeight * 0.75;
+        const windowHeight = window.innerHeight;
         
-        if (rect.top < triggerPoint) {
-            section.classList.add('active');
+        const sectionCenter = rect.top + rect.height / 2;
+        const screenCenter = windowHeight / 2;
+        const distanceFromCenter = Math.abs(screenCenter - sectionCenter);
+        
+        const threshold = windowHeight * 0.15; 
+        const fadeRange = windowHeight * 0.2;
+
+        if (distanceFromCenter < threshold) {
+            section.style.opacity = '1';
+            section.style.transform = 'translateY(0)';
         } else {
-            section.classList.remove('active');
+            let opacity = 1 - (distanceFromCenter - threshold) / fadeRange;
+            opacity = Math.max(0, Math.min(1, opacity));
+            
+            section.style.opacity = opacity.toString();
+            
+            let translateY = sectionCenter < screenCenter ? -40 : 40;
+            section.style.transform = `translateY(${translateY * (1 - opacity)}px)`;
         }
     });
-});
+}
+
+// Ejecutar al hacer scroll y también inmediatamente al cargar la página
+window.addEventListener('scroll', updateScrollEffects);
+window.addEventListener('load', updateScrollEffects);
+updateScrollEffects();

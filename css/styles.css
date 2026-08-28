@@ -339,18 +339,8 @@ body, html {
 
 /* Efecto de desvanecimiento únicamente inferior en el body para mantener el Hero 100% nítido arriba */
 body {
-    -webkit-mask-image: linear-gradient(
-        to bottom,
-        black 0%,
-        black 85%,
-        transparent 100%
-    );
-    mask-image: linear-gradient(
-        to bottom,
-        black 0%,
-        black 85%,
-        transparent 100%
-    );
+    -webkit-mask-image: none;
+    mask-image: none;
 }
 
 .path-container {

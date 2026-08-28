@@ -299,18 +299,38 @@ body, html {
 
 .text-center { text-align: center; }
 
-/* Responsive */
+/* Responsive adaptado para evitar solapamientos en móviles */
 @media (max-width: 768px) {
     .hero-container {
         flex-direction: column-reverse;
         text-align: center;
+        gap: 1.5rem;
     }
     .hero-text-content {
         text-align: center;
     }
     .hero-meta {
+        flex-direction: column;
+        gap: 0.4rem;
         justify-content: center;
+        align-items: center;
         text-align: center;
+        margin-bottom: 3.5rem;
+    }
+    .separator {
+        display: none;
+    }
+    .hero-bottom-cta {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 1rem;
+        text-align: center;
+    }
+    .full-section {
+        padding: 5rem 1.5rem 3rem 1.5rem;
+        min-height: auto;
     }
     .section-inner {
         padding: 2rem;

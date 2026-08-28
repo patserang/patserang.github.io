@@ -72,10 +72,10 @@ function updateScrollEffects() {
 
     // 1. Control del Hero: 100% nítido arriba y se desvanece suavemente al hacer scroll
     if (heroSection) {
-        let heroOpacity = 1 - (scrollPos / (heroHeight * 0.5));
+        let heroOpacity = 1 - (scrollPos / (heroHeight * 0.9)); // Rango más amplio para que dure nítido más tiempo
         heroOpacity = Math.max(0, Math.min(1, heroOpacity));
         heroSection.style.opacity = heroOpacity.toString();
-        heroSection.style.transform = `translateY(${scrollPos * 0.15}px)`;
+        heroSection.style.transform = `translateY(${scrollPos * 0.1}px)`;
     }
 
     // 2. Desvanecimiento del indicador "desliza para descubrir" en los primeros 100px

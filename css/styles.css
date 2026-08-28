@@ -333,3 +333,123 @@ body {
     -webkit-mask-image: none;
     mask-image: none;
 }
+
+.path-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 1000 / 400; /* Vincula la proporción exacta del viewBox del SVG */
+    margin: 3rem auto 0 auto;
+}
+
+.curved-path {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.path-node-html {
+    position: absolute;
+    transform: translate(-50%, -50%); /* Centra perfectamente el nodo en sus coordenadas */
+    width: 52px;
+    height: 52px;
+    background: var(--surface-glass, #121218);
+    border: 2px solid var(--neon-purple);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, background 0.3s ease;
+    z-index: 2;
+}
+
+.path-node-html img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.path-node-html:hover {
+    transform: translate(-50%, -50%) scale(1.2); /* Mantiene el centrado correcto al crecer */
+    box-shadow: 0 0 20px var(--neon-purple);
+    background: var(--surface-hover, #1f1f2e);
+}
+
+/* Estilos del modal (backdrop y ventana emergente) */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(4, 6, 7, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-backdrop.active {
+    opacity: 1;
+}
+
+.modal-content {
+    background: var(--surface-glass, #121218);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 0 40px rgba(191, 64, 250, 0.2);
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-backdrop.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--text-lavender);
+    font-size: 1.8rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.modal-close:hover {
+    opacity: 1;
+}
+
+#modal-title {
+    font-size: 1.4rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--text-lavender);
+}
+
+#modal-date {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+#modal-description {
+    font-size: 1rem;
+    line-height: 1.5;
+    opacity: 0.85;
+    margin: 0;
+}

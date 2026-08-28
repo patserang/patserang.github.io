@@ -47,7 +47,6 @@
     <!-- Sección 2: Sobre Mí -->
     <section id="sobre-mi" class="full-section content-section">
         <div class="section-inner">
-            <!-- <span class="tag">01 / Perfil Tecnológico</span> -->
             <h2 class="section-title">Sobre mí</h2>
             <p class="section-description">
                 ¡Hola! Soy Patricia, y si estás por aquí posiblemente nos hayamos conocido ya en persona.
@@ -61,7 +60,64 @@
         </div>
     </section>
 
-    <!-- Sección 3: Experiencia -->
+    <!-- Sección 3: Mis Inicios (ID corregido para que sea único) -->
+    <section id="estudios" class="full-section content-section">
+        <div class="section-inner">
+            <span class="tag">Estudios</span>
+            <h2 class="section-title">Mis inicios</h2>
+            <p class="section-description">
+                Aquí te cuento los motivos por los que elegí la carrera que elegí y por qué esta es la mejor carrera que pude haber elegido.
+            </p>
+            <p>
+                De todas las cosas que se aprenden en ingeniería de la salud quizás la más importante es tener al usuario final como referencia durante todo el proceso. Da igual que lo llames usuario, cliente o paciente, suele ser una persona que no tiene tu misma formación y es necesario escuchar y entender para lograr hacer algo que de verdad resuelva su necesidad.
+            </p>
+            <p>
+                Esta habilidad para traducir lo que el cliente dice en lo que quería decir es lo que convierte al ingeniero biomédico en un perfil tan valioso. Míralo de esta forma: como aprendemos que nuestro trabajo puede impactar directamente en la salud de las personas, aprendemos a trabajar con un margen de error cero.
+            </p>
+        </div>
+    </section>
+
+    <!-- Sección de Trayectoria / Camino Curvo (Corregida dentro de su sección) -->
+    <section id="trayectoria" class="full-section content-section">
+        <div class="section-inner">
+            <span class="tag">Experiencia Profesional</span>
+            <h2 class="section-title">Mi Trayectoria</h2>
+            <p class="section-description">Haz clic en cada empresa para ver los detalles del rol y los proyectos desarrollados.</p>
+            
+            <div class="path-container">
+                <!-- SVG de fondo con la curva -->
+                <svg class="curved-path" viewBox="0 0 1000 400" preserveAspectRatio="none">
+                    <path d="M 50 350 Q 300 50, 500 200 T 950 100" fill="none" stroke="var(--neon-purple)" stroke-width="3" stroke-dasharray="8 8" opacity="0.6"/>
+                </svg>
+
+                <!-- Nodos HTML posicionados -->
+                <div class="path-node-html" style="left: 5%; top: 87.5%;" data-company="empresa1">
+                    <img src="img/logo-empresa1.png" alt="Empresa 1">
+                </div>
+                <div class="path-node-html" style="left: 27.5%; top: 33.75%;" data-company="empresa2">
+                    <img src="img/logo-empresa2.png" alt="Empresa 2">
+                </div>
+                <div class="path-node-html" style="left: 65%; top: 61.25%;" data-company="empresa3">
+                    <img src="img/logo-empresa3.png" alt="Empresa 3">
+                </div>
+                <div class="path-node-html" style="left: 95%; top: 25%;" data-company="empresa4">
+                    <img src="img/logo-empresa4.png" alt="Empresa 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cuadro de diálogo / Modal para la experiencia -->
+    <div id="experience-modal" class="modal-backdrop" style="display: none;">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 id="modal-title">Título del puesto</h3>
+            <span id="modal-date" class="job-date">Fecha / Periodo</span>
+            <p id="modal-description">Descripción detallada de las funciones y tecnologías aplicadas en esta empresa.</p>
+        </div>
+    </div>
+
+    <!-- Sección 4: Experiencia Clave -->
     <section id="experiencia" class="full-section content-section">
         <div class="section-inner">
             <span class="tag">02 / Trayectoria</span>
@@ -81,7 +137,7 @@
         </div>
     </section>
 
-    <!-- Sección 4: Contacto / Cierre -->
+    <!-- Sección 5: Contacto / Cierre -->
     <section id="contacto" class="full-section content-section">
         <div class="section-inner text-center">
             <span class="tag">03 / Conexión</span>

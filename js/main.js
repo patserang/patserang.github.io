@@ -116,3 +116,65 @@ function updateScrollEffects() {
 window.addEventListener('scroll', updateScrollEffects);
 window.addEventListener('load', updateScrollEffects);
 updateScrollEffects();
+
+// Datos de la experiencia profesional por empresa
+const experienceData = {
+    empresa1: {
+        title: "Ingeniera de Automatización - TechCorp",
+        date: "2023 - Presente",
+        description: "Liderazgo en la implantación de herramientas digitales y optimización de flujos mediante IA para reducir tiempos operativos en un 40%."
+    },
+    empresa2: {
+        title: "Consultora de Transformación Digital - InnovaSol",
+        date: "2021 - 2023",
+        description: "Diseño y despliegue de arquitectura en la nube para procesos industriales y automatización de reportes analíticos."
+    },
+    empresa3: {
+        title: "Desarrolladora de Software - DataSystems",
+        date: "2019 - 2021",
+        description: "Creación de scripts avanzados y APIs conectadas a bases de datos relacionales para la monitorización de sistemas."
+    },
+    empresa4: {
+        title: "Junior Data Analyst - StartUp Lab",
+        date: "2018 - 2019",
+        description: "Análisis preliminar de datos operativos y soporte en la transición hacia entornos de trabajo digitalizados."
+    }
+};
+
+// Control del Modal de Experiencia
+const nodes = document.querySelectorAll('.path-node-html');
+const modal = document.getElementById('experience-modal');
+const modalClose = document.querySelector('.modal-close');
+const modalTitle = document.getElementById('modal-title');
+const modalDate = document.getElementById('modal-date');
+const modalDescription = document.getElementById('modal-description');
+
+nodes.forEach(node => {
+    node.addEventListener('click', () => {
+        const companyKey = node.getAttribute('data-company');
+        const data = experienceData[companyKey];
+        
+        if (data) {
+            modalTitle.textContent = data.title;
+            modalDate.textContent = data.date;
+            modalDescription.textContent = data.description;
+            
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('active'), 10);
+        }
+    });
+});
+
+function closeModal() {
+    modal.classList.remove('active');
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 300);
+}
+
+modalClose.addEventListener('click', closeModal);
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        closeModal();
+    }
+});

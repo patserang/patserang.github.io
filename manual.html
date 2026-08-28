@@ -1,0 +1,142 @@
+<!-- 
+  =================================================================
+  CURSO EXPRESS DE HTML: LA ANATOMÍA DE UNA PÁGINA WEB
+  =================================================================
+  ¿Qué es HTML? (HyperText Markup Language)
+  No es un lenguaje de programación, es un lenguaje de "marcas" o 
+  etiquetas. Sirve para estructurar el contenido de la web (decirle 
+  al navegador: "esto es un título", "esto es un párrafo", "esto es un botón").
+  Las etiquetas se abren con <nombre> y se cierran con </nombre>.
+-->
+
+<!-- 1. EL DECLARAFOR DE TIPO DE DOCUMENTO -->
+<!-- 
+  <!DOCTYPE html> no es una etiqueta HTML en sí, sino una instrucción 
+  para que el navegador sepa que estamos usando la versión moderna (HTML5).
+  Siempre debe ir en la primera línea absoluta del archivo.
+-->
+<!DOCTYPE html>
+
+<!-- 2. LA ETIQUETA RAIZ (<html lang="es">) -->
+<!-- 
+  Envuelve absolutamente todo el contenido de la página web. 
+  El atributo 'lang="es"' le indica a los navegadores y lectores de pantalla 
+  que el idioma principal de la web es el español (vital para accesibilidad y SEO).
+-->
+<html lang="es">
+<head>
+    <!-- 
+      =============================================================
+      LA SECCIÓN <head> (EL "CEREBRO" OCULTO)
+      =============================================================
+      Aquí van los metadatos, configuraciones y enlaces a archivos externos.
+      Nada de lo que pongas aquí se ve directamente en la pantalla de la web.
+    -->
+
+    <!-- Codificación de caracteres: Permite que se lean tildes, la letra 'ñ' y símbolos especiales sin errores -->
+    <meta charset="UTF-8">
+
+    <!-- Responsividad: Obligatorio hoy en día. Le dice a los móviles que ajusten la escala de la web a su tamaño de pantalla -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- El título de la pestaña del navegador -->
+    <title>Portfolio - Patricia Serrano</title>
+
+    <!-- Enlace con CSS: Conecta este HTML con tu archivo de estilos externo para darle diseño y colores -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- 
+      =============================================================
+      LA SECCIÓN <body> (EL "CUERPO" VISIBLE)
+      =============================================================
+      Aquí reside todo el contenido gráfico que el usuario ve e interactúa 
+      en su pantalla (textos, imágenes, botones, formularios...).
+    -->
+
+    <!-- 3. ETIQUETAS SEMÁNTICAS: <header> -->
+    <!-- 
+      Se usa para la cabecera principal de la página (o de una sección importante).
+      Ayuda a que Google y los buscadores entiendan la jerarquía de tu web.
+    -->
+    <header class="hero">
+        <!-- 
+          Etiquetas de encabezado (Heading tags): Van desde <h1> (el título más importante 
+          y grande de la página, idealmente solo uno por web) hasta <h6> (el menor).
+        -->
+        <h1>Patricia Serrano Angorrilla</h1>
+        
+        <!-- <h2> es un subtítulo, ideal para tu rol profesional principal -->
+        <h2>Ingeniera especialista en Transformación Digital</h2>
+        
+        <!-- <p> se usa para bloques de texto o párrafos normales -->
+        <p>patserang99@gmail.com | (+34) 693 061 723</p>
+    </header>
+
+    <!-- 4. ETIQUETAS SEMÁNTICAS: <main> -->
+    <!-- 
+      Representa el contenido central y principal del cuerpo de la página. 
+      Evita duplicar contenido genérico y centra el foco del documento.
+    -->
+    <main class="container">
+        
+        <section class="card">
+            
+        </section>
+        
+        
+        <!-- Contenedor genérico de sección: <section> -->
+        <section class="card">
+            <!-- <h3> Título de sección interna -->
+            <h3>Experiencia Profesional</h3>
+            
+            <div class="job-item">
+                <h4>Mirafutura Ingeniería S.L.</h4>
+                <p class="date">Enero 2025 - Julio 2026</p>
+                <!-- Uso de etiquetas de texto plano para describir cargos y funciones[cite: 3, 4] -->
+                <p>Responsable del Departamento de Digitalización e I+D. Desarrollo de bases de datos, automatización de procesos e integración de sistemas industriales.</p>
+            </div>
+            
+            <div class="job-item">
+                <h4>ARUS Andalucía Racing Team</h4>
+                <p class="date">Septiembre 2024 - Agosto 2025</p>
+                <p>Ingeniera electrónica en el desarrollo y validación experimental de PCBs para el Sistema de Gestión de Batería (BMS).</p>
+            </div>
+        </section>
+
+        <!-- Sección Interactiva para probar JavaScript -->
+        <section class="card interactive-card">
+            <h3>Sobre mi enfoque técnico</h3>
+            
+            <!-- 
+              Atributo 'id': Es un identificador ÚNICO en toda la página. 
+              Nos sirve como una "etiqueta con nombre" para que CSS o JavaScript 
+              puedan encontrar este elemento exacto fácilmente.
+            -->
+            <p id="info-text">Haz clic en el botón para ver una de mis especialidades principales.</p>
+            
+            <!-- 
+              <button>: Elemento interactivo nativo para que el usuario haga clic.
+              Lleva también un 'id' para que el archivo JS lo escuche.
+            -->
+            <button id="action-btn">Ver especialidad</button>
+        </section>
+
+    </main>
+
+    <!-- 5. ETIQUETAS SEMÁNTICAS: <footer> -->
+    <!-- Representa el pie de página, habitualmente con copyright, avisos legales o enlaces de contacto secundarios -->
+    <footer>
+        <p>&copy; 2026 Patricia Serrano Angorrilla</p>
+    </footer>
+
+    <!-- 6. CONEXIÓN CON JAVASCRIPT: <script> -->
+    <!-- 
+      La etiqueta <script> carga código de comportamiento dinámico. 
+      Siempre se suele colocar al final del todo (antes de cerrar el </body>) 
+      para asegurarnos de que el navegador lee primero todo el HTML visual 
+      antes de ejecutar scripts que lo puedan modificar.
+    -->
+    <script src="js/main.js"></script>
+</body>
+</html>

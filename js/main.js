@@ -1,65 +1,99 @@
-// Pequeña interacción básica para imitar el comportamiento dinámico
-const mensajes = [
-    "Diseño de sistemas embebidos, firmware en C/C++ y electrónica médica.",
-    "Digitalización industrial, automatización de procesos y bases de datos.",
-    "Desarrollo de dispositivos IoT (ESP32, BLE, MQTT) y gestión de proyectos I+D+i."
-];
+// Fondo animado de partículas original
+const canvas = document.getElementById('tech-canvas');
+const ctx = canvas.getContext('2d');
 
-let indice = 0;
-const boton = document.getElementById("action-btn");
-const texto = document.getElementById("info-text");
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
 
-if (boton) {
-    boton.addEventListener("click", () => {
-        indice = (indice + 1) % mensajes.length;
-        texto.textContent = mensajes[indice];
+const particles = [];
+const count = window.innerWidth < 768 ? 20 : 40;
+
+for (let i = 0; i < count; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.5) * 0.2,
+        radius: Math.random() * 1.5 + 0.8
     });
 }
 
-// 🤖 LÓGICA DE LA MASCOTA 🤖
+function renderTechBackground() {
+    ctx.fillStyle = '#040607';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-const comentarios = [
-    "¡Hola! Soy PatBot, tu guía personal por este CV interactivo.",
-    "¿Sabes que fui la primera de mi clase 3 años consecutivos? 🎓",
-    "Me encanta la ingeniería biomédica y la digitalización industrial. 💡",
-    "¡He trabajado en un vehículo eléctrico de competición! 🏎️",
-    "Si quieres contactar conmigo, mis datos están arriba a la derecha.",
-    "¿Te gusta el fondo animado? Es pura CSS. ✨",
-    "¡Gracias por visitar mi CV! 😊"
-];
+    for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
 
-const mascotaContenedor = document.getElementById('mascota-contenedor');
-const mascotaMensaje = document.getElementById('mascota-mensaje');
-let comentarioActual = 0;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
-// Función para cambiar el mensaje
-function cambiarComentario() {
-    comentarioActual = (comentarioActual + 1) % comentarios.length;
-    mascotaMensaje.textContent = comentarios[comentarioActual];
-}
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = '#BF40FA';
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = '#BF40FA';
+        ctx.fill();
+        ctx.shadowBlur = 0;
 
-// --- Aparecer la mascota ---
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        mascotaContenedor.classList.remove('oculto');
-        
-        // Cambiar el mensaje cada 10 segundos
-        setInterval(cambiarComentario, 10000); 
-        
-    }, 2000); // Aparece 2 segundos después de cargar la página
-});
+        for (let j = i + 1; j < particles.length; j++) {
+            let p2 = particles[j];
+            let distance = Math.hypot(p.x - p2.x, p.y - p2.y);
 
-// --- Interacción al hacer clic en el avatar ---
-const avatar = document.querySelector('.mascota-avatar');
-avatar.addEventListener('click', cambiarComentario);
-
-// --- (Opcional) Mascota que reacciona al hacer Scroll ---
-let ultimoScroll = 0;
-window.addEventListener('scroll', () => {
-    const scrollActual = window.scrollY;
-    if (scrollActual > ultimoScroll && scrollActual > 1000) {
-        // Si estás haciendo scroll hacia abajo y has bajado bastante
-        if (comentarioActual < 3) cambiarComentario(); // Forzar un comentario de proyecto si no ha salido
+            if (distance < 160) {
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.strokeStyle = `rgba(73, 40, 194, ${0.3 * (1 - distance / 160)})`;
+                ctx.lineWidth = 0.7;
+                ctx.stroke();
+            }
+        }
     }
-    ultimoScroll = scrollActual;
+    requestAnimationFrame(renderTechBackground);
+}
+renderTechBackground();
+
+/// Control de comportamiento al hacer scroll
+const topNavbar = document.getElementById('top-navbar');
+const heroSection = document.getElementById('hero');
+const contentSections = document.querySelectorAll('.content-section');
+const scrollHint = document.querySelector('.scroll-hint');
+
+window.addEventListener('scroll', () => {
+    const scrollPos = window.scrollY;
+    const heroHeight = heroSection.offsetHeight;
+
+    // Desvanecimiento agresivo del indicador "desliza para descubrir" en los primeros 100px
+    if (scrollHint) {
+        const fadeLimit = 100;
+        let opacityCalc = 0.4 * (1 - Math.min(scrollPos, fadeLimit) / fadeLimit);
+        scrollHint.style.opacity = opacityCalc;
+        scrollHint.style.transform = `translateX(-50%) translateY(${scrollPos * 0.3}px)`;
+    }
+
+    // 1. Mostrar/Ocultar barra superior cuando sales del Hero
+    if (scrollPos > heroHeight * 0.7) { // <-- CAMBIA ESTE VALOR (antes era 0.4, ahora es 0.7 o más)
+        topNavbar.classList.remove('hidden');
+    } else {
+        topNavbar.classList.add('hidden');
+    }
+
+    // 2. Activar efectos visuales de aparición para las secciones al hacer scroll
+    contentSections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const triggerPoint = window.innerHeight * 0.75;
+        
+        if (rect.top < triggerPoint) {
+            section.classList.add('active');
+        } else {
+            section.classList.remove('active');
+        }
+    });
 });

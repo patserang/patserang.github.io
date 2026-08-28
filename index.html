@@ -3,66 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Patricia Serrano</title>
+    <title>Patricia Serrano — Portfolio</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <!-- Cabecera principal -->
-    <header class="hero">
-        <h1>Patricia Serrano Angorrilla</h1>
-        <h2>Ingeniera especialista en Transformación Digital</h2>
-        <p>patserang99@gmail.com | (+34) 693 061 723</p>
-    </header>
+    <canvas id="tech-canvas"></canvas>
 
-    <!-- Contenedor principal estilo "tarjetas" (similar a componentes) -->
-    <main class="container">
-    
-    <!-- Sobre mí --------------------------------------------------->
-        <section class="card">
-            <h3>Sobre mí</h3>
-            <p>¡Hola! Soy Patricia.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin condimentum, nisi sit amet convallis elementum, felis massa ultricies massa, et bibendum nisi mauris ac nulla. Aenean nec ante aliquet, hendrerit metus ut, ornare urna. Vivamus eget semper urna, sit amet finibus ligula. Nam eleifend at eros non congue. Fusce finibus ultrices est, ac convallis odio finibus id. Mauris eu sem mauris. Integer sem dui, sagittis nec tincidunt eget, malesuada non enim. Pellentesque dignissim sit amet ipsum vitae porttitor. Mauris viverra dui nisl, a maximus turpis sagittis dignissim.</p>
-            <p>Nam gravida posuere mi. Proin eget bibendum nibh, a varius ex. Maecenas egestas elementum mi, nec dictum tortor laoreet vitae. Integer imperdiet ligula lectus, mattis mattis arcu sollicitudin a. Praesent luctus neque sed dolor efficitur vehicula. Nunc mattis libero quis ipsum blandit laoreet. Morbi a sem nisi. Nam pretium turpis in urna iaculis consectetur. Fusce in gravida nibh. Sed sed diam nibh.</p>
-        </section>
-    <!-- Experiencia profesional ------------------------------------>
-        <section class="card">
-            <h3>Experiencia Profesional</h3>
-            <div class="job-item">
-                <h4>Mirafutura Ingeniería S.L.</h4>
-                <p class="date">Enero 2025 - Actualidad</p>
-                <p>Responsable del Departamento de Digitalización e I+D. Desarrollo de bases de datos, automatización de procesos e integración de sistemas industriales.</p>
-            </div>
-            <div class="job-item">
-                <h4>ARUS Andalucía Racing Team</h4>
-                <p class="date">Septiembre 2024 - Agosto 2025</p>
-                <p>Ingeniera electrónica en el desarrollo y validación experimental de PCBs para el Sistema de Gestión de Batería (BMS).</p>
-            </div>
-        </section>
-    <!-- Botón interactivo -------------------------------------------->
-        <section class="card interactive-card">
-            <h3>Sobre mi enfoque técnico</h3>
-            <p id="info-text">Haz clic en el botón para ver una de mis especialidades principales.</p>
-            <button id="action-btn">Ver especialidad</button>
-        </section>
-    <!-- Mascota ------------------------------------------------------>
-        <div id="mascota-contenedor" class="oculto">
-        <!-- Imagen o icono de la mascota (puedes usar un emoji, un SVG o una imagen) -->
-        <div class="mascota-avatar">👩‍💻</div>
-        <!-- El cuadro de diálogo donde aparecerán los mensajes -->
-        <div class="mascota-dialogo" id="mascota-mensaje">
-            ¡Hola! Soy PatBot, tu guía personal por este CV interactivo.
+    <!-- Barra de navegación superior fija (inicialmente oculta/plegada) -->
+    <nav id="top-navbar" class="top-navbar hidden">
+        <div class="nav-content">
+            <span class="nav-name">Patricia Serrano</span>
+            <a href="#contacto" class="apple-button-small">Contacto</a>
         </div>
-    </div>
+    </nav>
 
-    </main>
+    <!-- Sección 1: Hero Principal (Pantalla Completa) -->
+    <section id="hero" class="full-section hero-section">
+        <div class="hero-container">
+            <div class="hero-text-content">
+                <span class="eyebrow">Transformación Digital e IA</span>
+                <h1>Patricia Serrano.</h1>
+                <p class="hero-subtitle">Ayudo a empresas a alcanzar su máximo potencial mediante la automatización de procesos y la implantación de herramientas digitales.</p>
+                <div class="hero-meta">
+                    <span>patserang99@gmail.com</span>
+                    <span class="separator">/</span>
+                    <span>(+34) 693 061 723</span>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <img src="assets/perfil.jpg" alt="Patricia Serrano" class="profile-photo">
+            </div>
+        </div>
+        
+        <!-- Botón de contacto centrado, colocado encima de "desliza para descubrir" -->
+        <div class="hero-bottom-cta">
+            <a href="#contacto" class="apple-button-small">Contacto</a>
+        </div>
 
-    <!-- Pie de página -->
-    <footer>
-        <p>&copy; 2026 Patricia Serrano Angorrilla</p>
-    </footer>
+        <div class="scroll-hint">Desliza para descubrir</div>
+    </section>
 
-    <!-- Archivo de JavaScript básico -->
+    <!-- Sección 2: Sobre Mí -->
+    <section id="sobre-mi" class="full-section content-section">
+        <div class="section-inner">
+            <!-- <span class="tag">01 / Perfil Tecnológico</span> -->
+            <h2 class="section-title">Sobre mí</h2>
+            <p class="section-description">
+                ¡Hola! Soy Patricia, y si estás por aquí posiblemente nos hayamos conocido ya en persona. Gracias por hacer uso del QR de mi tarjeta, te animo a leer un poco más sobre mí, seguro que conseguimos colaborar en algún proyecto.
+            </p>
+            <p>
+                Hola
+            </p>
+        </div>
+    </section>
+
+    <!-- Sección 3: Experiencia -->
+    <section id="experiencia" class="full-section content-section">
+        <div class="section-inner">
+            <span class="tag">02 / Trayectoria</span>
+            <h2 class="section-title">Experiencia Clave</h2>
+            <div class="experience-grid-inline">
+                <div class="job-item">
+                    <span class="job-date">2025 — Presente</span>
+                    <h3>Mirafutura Ingeniería S.L.</h3>
+                    <p>Responsable de Digitalización e I+D. Arquitectura de bases de datos y automatización.</p>
+                </div>
+                <div class="job-item">
+                    <span class="job-date">2024 — 2025</span>
+                    <h3>ARUS Andalucía Racing Team</h3>
+                    <p>Ingeniería electrónica y validación de PCBs de altas prestaciones para sistemas BMS.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 4: Contacto / Cierre -->
+    <section id="contacto" class="full-section content-section">
+        <div class="section-inner text-center">
+            <span class="tag">03 / Conexión</span>
+            <h2 class="section-title">¿Hablamos?</h2>
+            <p class="section-description">Disponible para proyectos de alta innovación y retos tecnológicos.</p>
+            <a href="mailto:patserang99@gmail.com" class="apple-button large-btn">Enviar un correo</a>
+        </div>
+    </section>
+
     <script src="js/main.js"></script>
 </body>
 </html>

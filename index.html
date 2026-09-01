@@ -136,7 +136,53 @@
         </div>
     </section>
 
-    <!-- Sección 4: Experiencia Clave -->
+    <!-- Sección 4: Terminal Interactiva de Proyectos -->
+    <section class="full-section" id="projects">
+        <div class="section-inner">
+            <span class="tag">Portafolio / Terminal</span>
+            <h2 class="section-title">Proyectos Destacados</h2>
+            <p class="section-description">
+                Explora mi código y desarrollos tecnológicos a través de esta terminal interactiva.
+            </p>
+            
+            <!-- Contenedor de la Terminal -->
+            <div class="terminal-container" id="terminal-container">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="t-btn red"></span>
+                        <span class="t-btn yellow"></span>
+                        <span class="t-btn green"></span>
+                    </div>
+                    <div class="terminal-title">patricia@portfolio:~ (zsh)</div>
+                </div>
+
+                <!-- Cuerpo de la terminal donde cambia dinámicamente el contenido -->
+                <div class="terminal-body" id="terminal-body">
+                    <div id="terminal-screen-content">
+                        <!-- El contenido interactivo se inyecta por JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Barra de comandos escrita (Escritorio) -->
+                <div class="terminal-input-bar" id="terminal-input-bar">
+                    <span class="terminal-prompt">root@portfolio:~$</span>
+                    <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" placeholder="Escribe un comando o número...">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal o visor ampliado de fotos para la terminal -->
+    <div id="terminal-photo-modal" class="terminal-photo-modal" style="display: none;">
+        <div class="terminal-photo-modal-content">
+            <button class="terminal-modal-close">&times;</button>
+            <button class="terminal-nav-arrow prev">&#10094;</button>
+            <img id="terminal-modal-img" src="" alt="Ampliada">
+            <button class="terminal-nav-arrow next">&#10095;</button>
+        </div>
+    </div>-->
+
+    <!-- Sección 4: Estudios adicionales -->
     <section id="cursos" class="full-section content-section">
         <div class="section-inner">
             <span class="tag">Formación</span>

@@ -47,8 +47,6 @@ body, html {
     display: flex;
     align-items: center;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-    -webkit-mask-image: none;
-    mask-image: none;
 }
 
 .top-navbar.hidden {
@@ -172,7 +170,6 @@ body, html {
     text-transform: uppercase;
     letter-spacing: 0.2em;
     opacity: 0.4;
-    transition: opacity 0.15s ease-out, transform 0.15s ease-out;
     animation: bounce 2s infinite;
 }
 
@@ -228,36 +225,6 @@ body, html {
     margin: 0;
 }
 
-/* Experiencia interna */
-.experience-grid-inline {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.job-item {
-    border-left: 2px solid var(--electric-indigo);
-    padding-left: 1.5rem;
-}
-
-.job-date {
-    font-size: 0.8rem;
-    color: var(--neon-purple);
-    font-family: monospace;
-}
-
-.job-item h3 {
-    font-size: 1.2rem;
-    margin: 0.4rem 0;
-}
-
-.job-item p {
-    font-size: 0.95rem;
-    opacity: 0.75;
-    margin: 0;
-}
-
 /* Botones estilo Apple */
 .apple-button-small {
     background: var(--text-lavender);
@@ -298,49 +265,7 @@ body, html {
 
 .text-center { text-align: center; }
 
-/* Responsive adaptado */
-@media (max-width: 768px) {
-    .hero-container {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 1.5rem;
-    }
-    .hero-text-content {
-        text-align: center;
-    }
-    .hero-meta {
-        flex-direction: column;
-        gap: 0.4rem;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        margin-bottom: 3.5rem;
-    }
-    .separator {
-        display: none;
-    }
-    .hero-bottom-cta {
-        position: relative;
-        bottom: auto;
-        left: auto;
-        transform: none;
-        margin-top: 1rem;
-        text-align: center;
-    }
-    .full-section {
-        padding: 5rem 1.5rem 3rem 1.5rem;
-        min-height: auto;
-    }
-    .section-inner {
-        padding: 2rem;
-    }
-}
-
-body {
-    -webkit-mask-image: none;
-    mask-image: none;
-}
-
+/* Trayectoria responsiva (Curva en escritorio, Línea Vertical en móvil) */
 .path-container {
     position: relative;
     width: 100%;
@@ -503,18 +428,9 @@ body {
     flex-shrink: 0;
 }
 
-/* Desincronización de retrasos individuales para evitar efecto robótico */
-.project-bubble:nth-child(1) {
-    animation-delay: 0s;
-}
-
-.project-bubble:nth-child(2) {
-    animation-delay: -1.3s;
-}
-
-.project-bubble:nth-child(3) {
-    animation-delay: -2.6s;
-}
+.project-bubble:nth-child(1) { animation-delay: 0s; }
+.project-bubble:nth-child(2) { animation-delay: -1.3s; }
+.project-bubble:nth-child(3) { animation-delay: -2.6s; }
 
 .project-bubble:hover {
     transform: scale(1.15) !important;
@@ -524,12 +440,8 @@ body {
 }
 
 @keyframes flotar {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-8px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -538,44 +450,7 @@ body {
     }
 }
 
-/* Estilos para la galería de fotos integrada en el modal de proyectos */
-.project-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 0.8rem;
-    margin-top: 1.5rem;
-}
-
-.project-gallery img {
-    width: 100%;
-    height: 90px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 1px solid var(--border-color);
-    cursor: pointer;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.project-gallery img:hover {
-    transform: scale(1.05);
-    opacity: 1;
-}
-
-/* Responsivo para móviles */
-@media (max-width: 768px) {
-    .bubbles-container {
-        min-height: auto;
-        padding: 1.5rem 0.5rem;
-        gap: 1.5rem;
-    }
-    .project-bubble {
-        width: 110px;
-        height: 110px;
-        font-size: 0.75rem;
-    }
-}
-
-/* Estilos de la Terminal Interactiva (Escritorio, Header, Cuerpo y Prompt) */
+/* Estilos de la Terminal Interactiva */
 .terminal-container {
     width: 100%;
     max-width: 900px;
@@ -657,35 +532,9 @@ body {
     width: 100%;
 }
 
-/* Estilos para el contenido dinámico de la terminal */
 .terminal-screen {
     font-family: monospace;
     color: var(--text-lavender);
-}
-
-.terminal-menu-options, .terminal-nav-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-.terminal-action-btn {
-    background: var(--surface-glass);
-    border: 1px solid var(--border-color);
-    color: var(--text-lavender);
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-family: monospace;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.terminal-action-btn:hover {
-    background: var(--neon-purple);
-    color: var(--bg-black);
-    border-color: var(--neon-purple);
 }
 
 /* Cuadrícula de fotos estilo explorador dentro de la terminal */
@@ -717,9 +566,9 @@ body {
 }
 
 .terminal-file-item img {
-    height: 110px; /* Altura unificada para todas las fotos */
-    width: auto;   /* El ancho se adapta de forma natural a la proporción de cada imagen */
-    max-width: 220px; /* Evita que las imágenes panorámicas extremas se desborden */
+    height: 110px;
+    width: auto;
+    max-width: 220px;
     object-fit: contain;
     border-radius: 4px;
     margin-bottom: 0.4px;
@@ -800,3 +649,147 @@ body {
 
 .terminal-nav-arrow.prev { left: -20px; }
 .terminal-nav-arrow.next { right: -20px; }
+
+/* Media Queries Responsivas (Móviles) */
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    .hero-text-content {
+        text-align: center;
+    }
+    .hero-meta {
+        flex-direction: column;
+        gap: 0.4rem;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 3.5rem;
+    }
+    .separator {
+        display: none;
+    }
+    .hero-bottom-cta {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 1rem;
+        text-align: center;
+    }
+    .full-section {
+        padding: 5rem 1.5rem 3rem 1.5rem;
+        min-height: auto;
+    }
+    .section-inner {
+        padding: 2rem;
+    }
+    .bubbles-container {
+        min-height: auto;
+        padding: 1.5rem 0.5rem;
+        gap: 1.5rem;
+    }
+    .project-bubble {
+        width: 110px;
+        height: 110px;
+        font-size: 0.75rem;
+    }
+
+    /* Trayectoria vertical en móvil alineada con una línea central */
+    .path-container {
+        aspect-ratio: auto;
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+        padding: 2rem 0;
+        position: relative;
+    }
+
+    .curved-path {
+        display: none;
+    }
+
+    .path-container::before {
+        content: '';
+        position: absolute;
+        top: 2rem;
+        bottom: 2rem;
+        left: 50%;
+        width: 2px;
+        background: var(--border-color);
+        transform: translateX(-50%);
+        z-index: 1;
+    }
+
+    .path-node-html {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        margin: 0 auto;
+        z-index: 2;
+    }
+
+    .path-node-html:hover {
+        transform: scale(1.1) !important;
+    }
+}
+
+/* Cuadrícula horizontal para la sección de estudios/experiencia */
+.experience-grid-inline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.job-item {
+    border-left: 2px solid var(--electric-indigo);
+    padding-left: 1.5rem;
+}
+
+.job-date {
+    font-size: 0.8rem;
+    color: var(--neon-purple);
+    font-family: monospace;
+}
+
+.job-item h3 {
+    font-size: 1.2rem;
+    margin: 0.4rem 0;
+}
+
+.job-item p {
+    font-size: 0.95rem;
+    opacity: 0.75;
+    margin: 0;
+}
+
+.terminal-menu-options, .terminal-nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.terminal-action-btn {
+    background: var(--surface-glass);
+    border: 1px solid var(--border-color);
+    color: var(--text-lavender);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.terminal-action-btn:hover {
+    background: var(--neon-purple);
+    color: var(--bg-black);
+    border-color: var(--neon-purple);
+}

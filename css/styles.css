@@ -650,7 +650,6 @@ body, html {
 .terminal-nav-arrow.prev { left: -20px; }
 .terminal-nav-arrow.next { right: -20px; }
 
-/* Media Queries Responsivas (Móviles) */
 @media (max-width: 768px) {
     .hero-container {
         flex-direction: column-reverse;
@@ -697,45 +696,62 @@ body, html {
         font-size: 0.75rem;
     }
 
-    /* Trayectoria vertical en móvil alineada con una línea central */
+    /* --- TRAYECTORIA VERTICAL SERPENTEANTE PERFECTA PARA MÓVIL --- */
     .path-container {
-        aspect-ratio: auto;
-        min-height: auto;
+        aspect-ratio: unset !important;
+        height: auto !important;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 2.5rem;
-        padding: 2rem 0;
+        gap: 3.5rem; /* Mayor espacio entre nodos para una curva fluida */
+        padding: 2rem 1rem;
         position: relative;
     }
 
     .curved-path {
-        display: none;
+        display: none !important;
     }
 
+    /* SVG con la onda calculada para pasar por el centro exacto de cada uno de los 6 nodos */
     .path-container::before {
         content: '';
         position: absolute;
-        top: 2rem;
-        bottom: 2rem;
+        top: 3.6rem;    /* Alinea el inicio con el centro del 1er nodo */
+        bottom: 3.6rem; /* Alinea el final con el centro del último nodo */
         left: 50%;
-        width: 2px;
-        background: var(--border-color);
+        width: 120px;
         transform: translateX(-50%);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 500' preserveAspectRatio='none'%3E%3Cpath d='M 15,0 C 85,50 85,50 85,100 C 15,150 15,150 15,200 C 85,250 85,250 85,300 C 15,350 15,350 15,400 C 85,450 85,450 85,500' fill='none' stroke='%23BF40FA' stroke-width='2' stroke-dasharray='5 5' stroke-opacity='0.6'/%3E%3C/svg%3E");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
         z-index: 1;
+        pointer-events: none;
     }
 
-    .path-node-html {
+    .path-container .path-node-html {
         position: relative !important;
         top: auto !important;
         left: auto !important;
-        transform: none !important;
-        margin: 0 auto;
         z-index: 2;
+        margin: 0 !important;
+        flex-shrink: 0;
     }
 
-    .path-node-html:hover {
-        transform: scale(1.1) !important;
+    /* Desplazamiento soplado exacto al pico de la curva SVG (42px) */
+    .path-container .path-node-html:nth-of-type(odd) {
+        transform: translateX(-42px) !important;
+    }
+
+    .path-container .path-node-html:nth-of-type(even) {
+        transform: translateX(42px) !important;
+    }
+
+    .path-container .path-node-html:hover {
+        transform: translateX(-42px) scale(1.1) !important;
+    }
+
+    .path-container .path-node-html:nth-of-type(even):hover {
+        transform: translateX(42px) scale(1.1) !important;
     }
 }
 

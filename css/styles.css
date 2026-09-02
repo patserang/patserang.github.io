@@ -161,6 +161,54 @@ body, html {
     z-index: 10;
 }
 
+/* Grupo de botones de llamada a la acción */
+.hero-cta-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem; /* Separa los botones del texto scroll-hint */
+}
+
+/* Estilos de botones generales */
+.btn {
+    padding: 0.6rem 1.4rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Botón principal (Contacto) */
+.btn-primary {
+    background-color: var(--text-lavender, #e2d9f3);
+    color: var(--bg-black, #0d0d11);
+    border: 1px solid var(--text-lavender, #e2d9f3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Botón secundario (Descargar CV) */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-lavender, #e2d9f3);
+    border: 1px solid var(--border-color, #2b2b36);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--neon-purple, #bf40fa);
+    transform: translateY(-2px);
+}
+
 .scroll-hint {
     position: absolute;
     bottom: 2rem;

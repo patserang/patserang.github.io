@@ -131,35 +131,40 @@ updateScrollEffects();
 
 // Datos de experiencia profesional extraídos íntegramente del currículum[cite: 1]
 const experienceData = {
+    siguiente: {
+        title: "Próxima oportunidad",
+        date: "Disponibilidad inmediata",
+        description: "Ahora es tu turno. Ayúdame a encontrar una empresa donde crecer, con metas a largo plazo y en la que poder asentarme. Si tienes una empresa orientada a la innovación constante, la búsqueda de nuevas tecnologías y oportunidades reales de crecimiento, ¡contáctame! Estoy segura de que ambos encontraremos la oportunidad que estamos buscando. ¡Te espero!"
+    },
     mirafutura: {
         title: "Responsable de Digitalización e I+D — Mirafutura Ingeniería S.L.",
         date: "Enero 2025 - Actualidad",
-        description: "Liderazgo de proyectos de digitalización industrial, definición de hojas de ruta de Industria 4.0, automatización de flujos de trabajo, coordinación técnica con clientes y gestión de proyectos de I+D+i[cite: 1]."
+        description: "En diciembre me llamaron desde Mirafutura: habían visto mi CV y tenían una oportunidad en su departamento de digitalización. Fueron muy claros desde el minuto uno: eran una empresa 100% industrial, sin apenas experiencia en digitalización, y buscaban a alguien polivalente que pudiera guiar esos proyectos casi desde cero. Echando a un lado el vértigo que me dio la gran responsabilidad que me querían asignar, acepté el reto y entré como ingeniera de proyectos. Tras el éxito de los primeros, me ascendieron a responsable del departamento. Desde entonces he llamado a la puerta de más de 10 pymes con proyectos de digitalización e IA, cerrando 6 y con otros 5 en marcha, apoyándome en contenido propio de promoción para abrir puertas antes de descolgar el teléfono. Lidero cada proyecto de principio a fin, desde analizar los flujos de una fábrica hasta dejarla sensorizada dentro de su propia hoja de ruta de Industria 4.0, y cuando hace falta financiación, gestiono la documentación para que mis clientes consigan ayudas de la Junta de Extremadura."
     },
     arus: {
         title: "Ingeniera de Electrónica — ARUS Andalucía Racing Team",
         date: "Septiembre 2024 - Agosto 2025",
-        description: "Diseño de PCBs para el Sistema de Gestión de Batería (BMS) de vehículo eléctrico de competición Formula Student, prototipado, ensamblaje y validación experimental bajo restricciones normativas estrictas[cite: 1]."
+        description: "Hay retos que cuando aparecen sabes que tienes que aceptarlos. Ese fue Arus, el equipo de Formula Student de la universidad: muy pocos alumnos son invitados a entrar, y muchos menos consiguen quedarse. Quise ponerme a prueba mientras terminaba el máster (solo me quedaba el TFM), y entré en el Departamento de Electrónica, donde me encargaron directamente el desarrollo de la nueva placa BMS Master del monoplaza: el sistema que gestiona la carga y descarga de la batería de alto voltaje dentro de unos márgenes seguros, cortando antes de que algo se salga de control. El reglamento internacional de la competición es muy exigente, y la fase de pruebas demostró que la teoría y la práctica no siempre terminan de casar. Esa segunda mitad del año la compaginé con mi siguiente experiencia laboral... pero esa historia te la cuento en el siguiente punto. 😉"
     },
     figroup: {
         title: "Consultora Técnica de Proyectos I+D+i — Fi Group",
         date: "Marzo 2024 - Septiembre 2024",
-        description: "Gestión y certificación de proyectos de I+D+i en sectores industriales de desarrollo de producto, redacción de memorias técnicas y defensa ante organismos públicos[cite: 1]."
+        description: "Tuve que poner punto y final a mi estancia en la biblioteca porque me llegó una oferta de empleo a tiempo completo. Técnicamente hablando, era mi primer 'empleo real': no podía negarme. Además, iba a estar muy cerquita de donde yo quería acabar: la I+D+i. Como consultora técnica, mi trabajo consistía en evaluar y certificar proyectos de empresas industriales, manufactureras y tecnológicas, identificando qué actividades encajaban realmente como investigación industrial o desarrollo tecnológico bajo el marco del RD 1432/2003. La parte más exigente venía después: redactar memorias científico-técnicas que explicaran, con rigor y sin trampas, la novedad real de cada desarrollo, y defender esos expedientes ante entidades certificadoras acreditadas por la ENAC. Proyectos de ingeniería biomédica, inteligencia artificial, transporte ferroviario... Sin duda, fueron 6 meses que supieron a poco y en los que aprendí más incluso que durante la carrera. Bueno, no más, pero sí diferente."
     },
     us: {
         title: "Soporte Técnico Informático — Universidad de Sevilla",
         date: "Octubre 2023 - Marzo 2024",
-        description: "Soporte técnico, mantenimiento de sistemas y gestión integral de incidencias de hardware y software en el Servicio Central de Informática[cite: 1]."
+        description: "Al acabar mis estudios de grado, comencé los de máster. Al mismo tiempo, encontré un empleo a tiempo parcial en la biblioteca de la Universidad de Sevilla. ¿Qué pinta la biblioteca en un CV técnico como este? Muy sencillo: entré a trabajar en el Servicio Central de Informática de la biblioteca, ofreciendo soporte técnico tanto a alumnos como al personal laboral de la universidad, solucionando incidencias, realizando mantenimientos preventivos y alguno correctivo, y trabajando tanto en Windows como en Linux. La velocidad a la que trabaja el servicio técnico tras el telón te resultaría asombrosa: debíamos estar en cualquier punto de todo el complejo universitario a tiempo para resolver una avería antes de que nadie lo notase. Claramente, el mejor soporte técnico es el que parece que no hace falta."
     },
     biotech: {
         title: "Ingeniera de Desarrollo de Producto — Biotechnology and Healthcare Developments S.L.",
         date: "Noviembre 2022 - Febrero 2023",
-        description: "Diseño y desarrollo de dispositivo electrónico médico (pulsioxímetro bluetooth) bajo estrictos estándares normativos de seguridad eléctrica y compatibilidad electromagnética[cite: 1]."
+        description: "Fíjate en las fechas: estuve trabajando al mismo tiempo como alumna interna en la Universidad de Sevilla y haciendo mis prácticas curriculares. Coincidiendo a su vez con mi TFG, el B2 de inglés, B1 de portugués y, en general, el final de mis estudios. Créeme cuando te digo que fue un año duro. Pero aquí estoy: ingeniera titulada, hablando 3 idiomas con fluidez y con una supercapacidad para trabajar bajo presión. ¿Deseable? No mucho. ¿Útil? Lo que más."
     },
     fidetia: {
         title: "Investigadora en Bioelectrónica (Proyecto DeTecBio) — FIDETIA",
         date: "Noviembre 2022 - Febrero 2023",
-        description: "Desarrollo de sistemas embebidos de bajo consumo para la adquisición de señales bioeléctricas en entornos de laboratorio e investigación aplicada[cite: 1]."
+        description: "Mi primera experiencia laboral fue dentro de un grupo de investigación de la universidad. Es lo bueno de ser admitida como alumna interna: tienes acceso a oportunidades que otros no. De todos los proyectos que se llevaban en este departamento yo elegí el proyecto DeTecBio: un proyecto enfocado en desarrollar nuevos sistemas de adquisición de señales fisiológicas. Mi tarea consistió en actualizar el código y los protocolos de firmware para que fueran compatibles con el nuevo microcontrolador de Nordic, el nRF53. Esta experiencia me permitió dar mis primeros pasos en ese mundo laboral que a veces a veces extraño para los estudiantes."
     }
 };
 

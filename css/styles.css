@@ -78,6 +78,19 @@ body, html {
     gap: 0.75rem;
 }
 
+/* Secciones a pantalla completa */
+.full-section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 2rem 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
 /* Hero Section */
 .hero-section {
     opacity: 1;
@@ -144,7 +157,13 @@ body, html {
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--neon-purple);
-    box-shadow: 0 0 30px rgba(191, 64, 250, 0.3);
+    box-shadow: 0 0 30px rgba(191, 64, 250, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-photo:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 45px rgba(191, 64, 250, 0.7);
 }
 
 .hero-bottom-cta {
@@ -171,14 +190,13 @@ body, html {
     font-weight: 600;
     font-size: 0.9rem;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Botón principal (Contacto) */
 .btn-primary {
     background-color: var(--text-lavender);
     color: var(--bg-black);
@@ -186,11 +204,13 @@ body, html {
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
+    background-color: var(--neon-purple);
+    color: var(--text-lavender);
+    border-color: var(--neon-purple);
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(191, 64, 250, 0.5);
 }
 
-/* Botón secundario (Descargar CV) */
 .btn-secondary {
     background-color: transparent;
     color: var(--text-lavender);
@@ -198,9 +218,10 @@ body, html {
 }
 
 .btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(191, 64, 250, 0.1);
     border-color: var(--neon-purple);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(191, 64, 250, 0.3);
 }
 
 .scroll-hint {
@@ -222,29 +243,15 @@ body, html {
 }
 
 /* Secciones de Contenido */
-.full-section {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 6rem 2rem 4rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
+.content-section {
+    opacity: 0.2;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Asegura la visibilidad base de las secciones */
-.content-section, 
-.full-section {
+.content-section.active {
     opacity: 1;
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-/* Si usas la animación por Observer, la opacidad cero solo aplica si NO tiene la clase visible */
-.content-section:not(.is-visible) {
-    opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(0);
 }
 
 .section-inner {
@@ -281,47 +288,9 @@ body, html {
     margin: 0;
 }
 
-/* Botones estilo Apple */
-.apple-button-small {
-    background: var(--text-lavender);
-    color: var(--bg-black);
-    padding: 0.5rem 1.25rem;
-    border-radius: 980px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: transform 0.2s ease, background 0.2s ease;
-    display: inline-block;
-}
-
-.apple-button-small:hover {
-    background: var(--neon-purple);
-    color: var(--text-lavender);
-    transform: scale(1.02);
-}
-
-.apple-button.large-btn {
-    display: inline-block;
-    background: var(--text-lavender);
-    color: var(--bg-black);
-    padding: 0.9rem 2.2rem;
-    border-radius: 980px;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    margin-top: 1.5rem;
-    transition: all 0.3s ease;
-}
-
-.apple-button.large-btn:hover {
-    background: var(--neon-purple);
-    color: var(--text-lavender);
-    transform: scale(1.03);
-}
-
 .text-center { text-align: center; }
 
-/* Trayectoria responsiva (Curva en escritorio, Línea Vertical en móvil) */
+/* Trayectoria de experiencia */
 .path-container {
     position: relative;
     width: 100%;
@@ -342,17 +311,18 @@ body, html {
 .path-node-html {
     position: absolute;
     transform: translate(-50%, -50%);
-    width: 52px;
-    height: 52px;
-    background: var(--surface-glass);
+    width: 56px;
+    height: 56px;
+    background: var(--surface-glass, #121218);
     border: 2px solid var(--neon-purple);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, background 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, background 0.3s ease;
     z-index: 2;
+    box-shadow: 0 0 12px rgba(191, 64, 250, 0.3);
 }
 
 .path-node-html img {
@@ -363,12 +333,12 @@ body, html {
 }
 
 .path-node-html:hover {
-    transform: translate(-50%, -50%) scale(1.2);
-    box-shadow: 0 0 20px var(--neon-purple);
+    transform: translate(-50%, -50%) scale(1.25);
+    box-shadow: 0 0 25px var(--neon-purple);
     background: var(--surface-hover);
 }
 
-/* Estilos del modal general y de proyectos */
+/* Modales */
 .modal-backdrop {
     position: fixed;
     top: 0;
@@ -383,17 +353,15 @@ body, html {
     justify-content: center;
     z-index: 2000;
     opacity: 0;
-    pointer-events: none;
     transition: opacity 0.3s ease;
 }
 
 .modal-backdrop.active {
     opacity: 1;
-    pointer-events: auto;
 }
 
 .modal-content {
-    background: #0d0e15;
+    background: var(--surface-glass);
     border: 1px solid var(--border-color);
     border-radius: 20px;
     padding: 2.5rem;
@@ -402,7 +370,7 @@ body, html {
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
-    box-shadow: 0 0 40px rgba(191, 64, 250, 0.2);
+    box-shadow: 0 0 40px rgba(191, 64, 250, 0.25);
     transform: scale(0.95);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -421,51 +389,53 @@ body, html {
     font-size: 1.8rem;
     cursor: pointer;
     opacity: 0.7;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .modal-close:hover {
     opacity: 1;
+    transform: scale(1.1);
 }
 
-#modal-title, #project-modal-title {
+#modal-title {
     font-size: 1.4rem;
     margin: 0 0 0.5rem 0;
     color: var(--text-lavender);
 }
 
-#modal-date, #project-modal-tag {
+#modal-date {
     display: block;
     margin-bottom: 1rem;
+    color: var(--neon-purple);
+    font-family: monospace;
 }
 
-#modal-description, #project-modal-description {
+#modal-description {
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.6;
     opacity: 0.85;
     margin: 0;
     white-space: pre-line;
 }
 
-/* Galería flexible y adaptable de burbujas flotantes */
+/* Burbujas Flotantes Animadas */
 .bubbles-container {
     position: relative;
     width: 100%;
-    min-height: 480px;
+    min-height: 380px;
     margin-top: 2rem;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 2.5rem;
     padding: 1rem;
-    overflow: visible;
 }
 
 .project-bubble {
     position: relative;
-    width: 130px;
-    height: 130px;
+    width: 140px;
+    height: 140px;
     background: var(--surface-glass);
     border: 2px solid var(--neon-purple);
     border-radius: 50%;
@@ -473,16 +443,16 @@ body, html {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 1rem;
+    padding: 1.2rem;
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-lavender);
     cursor: pointer;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 0 20px rgba(191, 64, 250, 0.15);
+    box-shadow: 0 0 20px rgba(191, 64, 250, 0.2);
     animation: flotar 4s ease-in-out infinite;
-    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, box-shadow 0.3s ease;
     user-select: none;
     flex-shrink: 0;
 }
@@ -490,17 +460,18 @@ body, html {
 .project-bubble:nth-child(1) { animation-delay: 0s; }
 .project-bubble:nth-child(2) { animation-delay: -1.3s; }
 .project-bubble:nth-child(3) { animation-delay: -2.6s; }
+.project-bubble:nth-child(4) { animation-delay: -0.7s; }
 
 .project-bubble:hover {
-    transform: scale(1.15) !important;
+    transform: scale(1.18) !important;
     background: var(--surface-hover);
-    box-shadow: 0 0 30px var(--neon-purple);
+    box-shadow: 0 0 35px var(--neon-purple);
     z-index: 10;
 }
 
 @keyframes flotar {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-12px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -509,24 +480,22 @@ body, html {
     }
 }
 
-/* Estilos de la Terminal Interactiva */
+/* Terminal Interactiva */
 .terminal-container {
     width: 100%;
     max-width: 900px;
     margin: 2rem auto 0 auto;
-    background: rgba(8, 10, 15, 0.95);
+    background: rgba(4, 6, 7, 0.85);
     border: 1px solid var(--border-color);
     border-radius: 14px;
-    box-shadow: 0 0 30px rgba(73, 40, 194, 0.2);
+    box-shadow: 0 0 35px rgba(73, 40, 194, 0.25);
     overflow: hidden;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    position: relative;
-    z-index: 5;
 }
 
 .terminal-header {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.04);
     border-bottom: 1px solid var(--border-color);
     padding: 0.75rem 1rem;
     display: flex;
@@ -566,7 +535,6 @@ body, html {
     font-size: 0.9rem;
     line-height: 1.6;
     color: var(--text-lavender);
-    overflow-y: auto;
 }
 
 .terminal-input-bar {
@@ -599,7 +567,32 @@ body, html {
     color: var(--text-lavender);
 }
 
-/* Cuadrícula de fotos estilo explorador dentro de la terminal */
+.terminal-menu-options, .terminal-nav-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1rem;
+}
+
+.terminal-action-btn {
+    background: var(--surface-glass);
+    border: 1px solid var(--border-color);
+    color: var(--text-lavender);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.terminal-action-btn:hover {
+    background: var(--neon-purple);
+    color: var(--bg-black);
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 12px rgba(191, 64, 250, 0.4);
+}
+
 .terminal-file-grid {
     display: flex;
     flex-wrap: wrap;
@@ -622,9 +615,10 @@ body, html {
 }
 
 .terminal-file-item:hover {
-    transform: scale(1.03);
+    transform: scale(1.04);
     border-color: var(--neon-purple);
-    background: rgba(91, 42, 98, 0.3);
+    background: rgba(91, 42, 98, 0.35);
+    box-shadow: 0 0 15px rgba(191, 64, 250, 0.3);
 }
 
 .terminal-file-item img {
@@ -633,7 +627,7 @@ body, html {
     max-width: 220px;
     object-fit: contain;
     border-radius: 4px;
-    margin-bottom: 0.4px;
+    margin-bottom: 0.4rem;
     display: block;
 }
 
@@ -647,7 +641,7 @@ body, html {
     width: 100%;
 }
 
-/* Visor ampliado de fotos (Lightbox) */
+/* Lightbox de fotos */
 .terminal-photo-modal {
     position: fixed;
     top: 0;
@@ -664,13 +658,12 @@ body, html {
 
 .terminal-photo-modal-content {
     position: relative;
-    max-width: 900px;
+    max-width: 800px;
     width: 90%;
     max-height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 3.5rem;
 }
 
 .terminal-photo-modal-content img {
@@ -678,7 +671,7 @@ body, html {
     max-height: 80vh;
     border-radius: 8px;
     border: 1px solid var(--neon-purple);
-    object-fit: contain;
+    box-shadow: 0 0 30px rgba(191, 64, 250, 0.3);
 }
 
 .terminal-modal-close {
@@ -699,29 +692,23 @@ body, html {
     background: rgba(191, 64, 250, 0.2);
     border: 1px solid var(--neon-purple);
     color: var(--text-lavender);
-    width: 46px;
-    height: 46px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 0.8rem 1rem;
     cursor: pointer;
     border-radius: 50%;
-    font-size: 1.1rem;
+    font-size: 1rem;
     transition: background 0.2s ease, transform 0.2s ease;
-    z-index: 10;
-    flex-shrink: 0;
 }
 
 .terminal-nav-arrow:hover {
     background: var(--neon-purple);
     color: var(--bg-black);
+    transform: translateY(-50%) scale(1.1);
 }
 
-.terminal-nav-arrow.prev { left: 0; }
-.terminal-nav-arrow.next { right: 0; }
+.terminal-nav-arrow.prev { left: -20px; }
+.terminal-nav-arrow.next { right: -20px; }
 
-/* Cuadrícula horizontal para la sección de estudios/experiencia */
+/* Grid para Estudios / Experiencia Inline */
 .experience-grid-inline {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -751,32 +738,7 @@ body, html {
     margin: 0;
 }
 
-.terminal-menu-options, .terminal-nav-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-.terminal-action-btn {
-    background: var(--surface-glass);
-    border: 1px solid var(--border-color);
-    color: var(--text-lavender);
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-family: monospace;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.terminal-action-btn:hover {
-    background: var(--neon-purple);
-    color: var(--bg-black);
-    border-color: var(--neon-purple);
-}
-
-/* REGLAS RESPONSIVAS PARA MÓVIL */
+/* Adaptación Responsiva para Móvil */
 @media (max-width: 768px) {
     .hero-container {
         flex-direction: column-reverse;
@@ -822,8 +784,6 @@ body, html {
         height: 110px;
         font-size: 0.75rem;
     }
-
-    /* Trayectoria vertical invertida para móviles */
     .path-container {
         aspect-ratio: unset !important;
         height: auto !important;
@@ -834,11 +794,9 @@ body, html {
         padding: 2rem 1rem;
         position: relative;
     }
-
     .curved-path {
         display: none !important;
     }
-
     .path-container::before {
         content: '';
         position: absolute;
@@ -853,7 +811,6 @@ body, html {
         z-index: 1;
         pointer-events: none;
     }
-
     .path-container .path-node-html {
         position: relative !important;
         top: auto !important;
@@ -862,19 +819,15 @@ body, html {
         margin: 0 !important;
         flex-shrink: 0;
     }
-
     .path-container .path-node-html:nth-of-type(odd) {
         transform: translateX(-42px) !important;
     }
-
     .path-container .path-node-html:nth-of-type(even) {
         transform: translateX(42px) !important;
     }
-
     .path-container .path-node-html:nth-of-type(odd):hover {
         transform: translateX(-42px) scale(1.1) !important;
     }
-
     .path-container .path-node-html:nth-of-type(even):hover {
         transform: translateX(42px) scale(1.1) !important;
     }

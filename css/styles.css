@@ -78,19 +78,6 @@ body, html {
     gap: 0.75rem;
 }
 
-/* Secciones a pantalla completa */
-.full-section {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 6rem 2rem 4rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-}
-
 /* Hero Section */
 .hero-section {
     opacity: 1;
@@ -193,9 +180,9 @@ body, html {
 
 /* Botón principal (Contacto) */
 .btn-primary {
-    background-color: var(--text-lavender, #e2d9f3);
-    color: var(--bg-black, #0d0d11);
-    border: 1px solid var(--text-lavender, #e2d9f3);
+    background-color: var(--text-lavender);
+    color: var(--bg-black);
+    border: 1px solid var(--text-lavender);
 }
 
 .btn-primary:hover {
@@ -206,13 +193,13 @@ body, html {
 /* Botón secundario (Descargar CV) */
 .btn-secondary {
     background-color: transparent;
-    color: var(--text-lavender, #e2d9f3);
-    border: 1px solid var(--border-color, #2b2b36);
+    color: var(--text-lavender);
+    border: 1px solid var(--border-color);
 }
 
 .btn-secondary:hover {
     background-color: rgba(255, 255, 255, 0.05);
-    border-color: var(--neon-purple, #bf40fa);
+    border-color: var(--neon-purple);
     transform: translateY(-2px);
 }
 
@@ -235,15 +222,29 @@ body, html {
 }
 
 /* Secciones de Contenido */
-.content-section {
-    opacity: 0.2;
-    transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+.full-section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 2rem 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
 }
 
-.content-section.active {
+/* Asegura la visibilidad base de las secciones */
+.content-section, 
+.full-section {
     opacity: 1;
-    transform: translateY(0);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Si usas la animación por Observer, la opacidad cero solo aplica si NO tiene la clase visible */
+.content-section:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(20px);
 }
 
 .section-inner {
@@ -343,7 +344,7 @@ body, html {
     transform: translate(-50%, -50%);
     width: 52px;
     height: 52px;
-    background: var(--surface-glass, #121218);
+    background: var(--surface-glass);
     border: 2px solid var(--neon-purple);
     border-radius: 50%;
     display: flex;
@@ -364,7 +365,7 @@ body, html {
 .path-node-html:hover {
     transform: translate(-50%, -50%) scale(1.2);
     box-shadow: 0 0 20px var(--neon-purple);
-    background: var(--surface-hover, #1f1f2e);
+    background: var(--surface-hover);
 }
 
 /* Estilos del modal general y de proyectos */
@@ -382,15 +383,17 @@ body, html {
     justify-content: center;
     z-index: 2000;
     opacity: 0;
+    pointer-events: none;
     transition: opacity 0.3s ease;
 }
 
 .modal-backdrop.active {
     opacity: 1;
+    pointer-events: auto;
 }
 
 .modal-content {
-    background: var(--surface-glass, #121218);
+    background: #0d0e15;
     border: 1px solid var(--border-color);
     border-radius: 20px;
     padding: 2.5rem;
@@ -436,7 +439,6 @@ body, html {
     margin-bottom: 1rem;
 }
 
-/* Permite que los saltos de línea \n funcionen correctamente en el modal */
 #modal-description, #project-modal-description {
     font-size: 1rem;
     line-height: 1.5;
@@ -512,17 +514,19 @@ body, html {
     width: 100%;
     max-width: 900px;
     margin: 2rem auto 0 auto;
-    background: rgba(4, 6, 7, 0.75);
+    background: rgba(8, 10, 15, 0.95);
     border: 1px solid var(--border-color);
     border-radius: 14px;
     box-shadow: 0 0 30px rgba(73, 40, 194, 0.2);
     overflow: hidden;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
+    position: relative;
+    z-index: 5;
 }
 
 .terminal-header {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.05);
     border-bottom: 1px solid var(--border-color);
     padding: 0.75rem 1rem;
     display: flex;
@@ -557,18 +561,19 @@ body, html {
 
 .terminal-body {
     padding: 1.5rem;
-    min-height: 260px;
+    min-height: 280px;
     font-family: monospace;
     font-size: 0.9rem;
     line-height: 1.6;
     color: var(--text-lavender);
+    overflow-y: auto;
 }
 
 .terminal-input-bar {
     display: flex;
     align-items: center;
     padding: 0.8rem 1.5rem;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.3);
     border-top: 1px solid var(--border-color);
     font-family: monospace;
 }
@@ -659,12 +664,13 @@ body, html {
 
 .terminal-photo-modal-content {
     position: relative;
-    max-width: 800px;
+    max-width: 900px;
     width: 90%;
     max-height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 3.5rem;
 }
 
 .terminal-photo-modal-content img {
@@ -672,6 +678,7 @@ body, html {
     max-height: 80vh;
     border-radius: 8px;
     border: 1px solid var(--neon-purple);
+    object-fit: contain;
 }
 
 .terminal-modal-close {
@@ -692,11 +699,18 @@ body, html {
     background: rgba(191, 64, 250, 0.2);
     border: 1px solid var(--neon-purple);
     color: var(--text-lavender);
-    padding: 0.8rem 1rem;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     border-radius: 50%;
-    font-size: 1rem;
-    transition: background 0.2s ease;
+    font-size: 1.1rem;
+    transition: background 0.2s ease, transform 0.2s ease;
+    z-index: 10;
+    flex-shrink: 0;
 }
 
 .terminal-nav-arrow:hover {
@@ -704,115 +718,8 @@ body, html {
     color: var(--bg-black);
 }
 
-.terminal-nav-arrow.prev { left: -20px; }
-.terminal-nav-arrow.next { right: -20px; }
-
-/* REGLAS RESPONSIVAS PARA MÓVIL */
-@media (max-width: 768px) {
-    .hero-container {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 1.5rem;
-    }
-    .hero-text-content {
-        text-align: center;
-    }
-    .hero-meta {
-        flex-direction: column;
-        gap: 0.4rem;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        margin-bottom: 3.5rem;
-    }
-    .separator {
-        display: none;
-    }
-    .hero-bottom-cta {
-        position: relative;
-        bottom: auto;
-        left: auto;
-        transform: none;
-        margin-top: 1rem;
-        text-align: center;
-    }
-    .full-section {
-        padding: 5rem 1.5rem 3rem 1.5rem;
-        min-height: auto;
-    }
-    .section-inner {
-        padding: 2rem;
-    }
-    .bubbles-container {
-        min-height: auto;
-        padding: 1.5rem 0.5rem;
-        gap: 1.5rem;
-    }
-    .project-bubble {
-        width: 110px;
-        height: 110px;
-        font-size: 0.75rem;
-    }
-
-    /* --- TRAYECTORIA VERTICAL INVERTIDA Y ADAPTADA A 7 NODOS --- */
-    .path-container {
-        aspect-ratio: unset !important;
-        height: auto !important;
-        display: flex;
-        flex-direction: column-reverse; /* Inverteix el ordre per a que 'Siguiente' estigui a dalt */
-        align-items: center;
-        gap: 3.5rem;
-        padding: 2rem 1rem;
-        position: relative;
-    }
-
-    .curved-path {
-        display: none !important;
-    }
-
-    /* SVG serpenteante ajustado a 7 nodos */
-    .path-container::before {
-        content: '';
-        position: absolute;
-        top: 3.6rem;
-        bottom: 3.6rem;
-        left: 50%;
-        width: 120px;
-        transform: translateX(-50%);
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 600' preserveAspectRatio='none'%3E%3Cpath d='M 15,0 C 85,50 85,50 85,100 C 15,150 15,150 15,200 C 85,250 85,250 85,300 C 15,350 15,350 15,400 C 85,450 85,450 85,500 C 15,550 15,550 15,600' fill='none' stroke='%23BF40FA' stroke-width='2' stroke-dasharray='5 5' stroke-opacity='0.6'/%3E%3C/svg%3E");
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        z-index: 1;
-        pointer-events: none;
-    }
-
-    .path-container .path-node-html {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        z-index: 2;
-        margin: 0 !important;
-        flex-shrink: 0;
-    }
-
-    /* Al invertir 7 nodos, los impares van a la izquierda (-42px) */
-    .path-container .path-node-html:nth-of-type(odd) {
-        transform: translateX(-42px) !important;
-    }
-
-    /* Los pares van a la derecha (+42px) */
-    .path-container .path-node-html:nth-of-type(even) {
-        transform: translateX(42px) !important;
-    }
-
-    .path-container .path-node-html:nth-of-type(odd):hover {
-        transform: translateX(-42px) scale(1.1) !important;
-    }
-
-    .path-container .path-node-html:nth-of-type(even):hover {
-        transform: translateX(42px) scale(1.1) !important;
-    }
-}
+.terminal-nav-arrow.prev { left: 0; }
+.terminal-nav-arrow.next { right: 0; }
 
 /* Cuadrícula horizontal para la sección de estudios/experiencia */
 .experience-grid-inline {
@@ -867,4 +774,108 @@ body, html {
     background: var(--neon-purple);
     color: var(--bg-black);
     border-color: var(--neon-purple);
+}
+
+/* REGLAS RESPONSIVAS PARA MÓVIL */
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    .hero-text-content {
+        text-align: center;
+    }
+    .hero-meta {
+        flex-direction: column;
+        gap: 0.4rem;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 3.5rem;
+    }
+    .separator {
+        display: none;
+    }
+    .hero-bottom-cta {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        transform: none;
+        margin-top: 1rem;
+        text-align: center;
+    }
+    .full-section {
+        padding: 5rem 1.5rem 3rem 1.5rem;
+        min-height: auto;
+    }
+    .section-inner {
+        padding: 2rem;
+    }
+    .bubbles-container {
+        min-height: auto;
+        padding: 1.5rem 0.5rem;
+        gap: 1.5rem;
+    }
+    .project-bubble {
+        width: 110px;
+        height: 110px;
+        font-size: 0.75rem;
+    }
+
+    /* Trayectoria vertical invertida para móviles */
+    .path-container {
+        aspect-ratio: unset !important;
+        height: auto !important;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 3.5rem;
+        padding: 2rem 1rem;
+        position: relative;
+    }
+
+    .curved-path {
+        display: none !important;
+    }
+
+    .path-container::before {
+        content: '';
+        position: absolute;
+        top: 3.6rem;
+        bottom: 3.6rem;
+        left: 50%;
+        width: 120px;
+        transform: translateX(-50%);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 600' preserveAspectRatio='none'%3E%3Cpath d='M 15,0 C 85,50 85,50 85,100 C 15,150 15,150 15,200 C 85,250 85,250 85,300 C 15,350 15,350 15,400 C 85,450 85,450 85,500 C 15,550 15,550 15,600' fill='none' stroke='%23BF40FA' stroke-width='2' stroke-dasharray='5 5' stroke-opacity='0.6'/%3E%3C/svg%3E");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .path-container .path-node-html {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        z-index: 2;
+        margin: 0 !important;
+        flex-shrink: 0;
+    }
+
+    .path-container .path-node-html:nth-of-type(odd) {
+        transform: translateX(-42px) !important;
+    }
+
+    .path-container .path-node-html:nth-of-type(even) {
+        transform: translateX(42px) !important;
+    }
+
+    .path-container .path-node-html:nth-of-type(odd):hover {
+        transform: translateX(-42px) scale(1.1) !important;
+    }
+
+    .path-container .path-node-html:nth-of-type(even):hover {
+        transform: translateX(42px) scale(1.1) !important;
+    }
 }

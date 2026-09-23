@@ -207,70 +207,90 @@ const terminalProjectsData = [
     title: "Master PCB for AMS - ARUS Andalucía Racing Team",
     category: "Hardware / PCB Design",
     description: "Diseño y desarrollo de la placa Master PCB para el sistema de gestión de baterías (AMS) del equipo de competición ARUS Andalucía Racing Team.",
-    images: ["assets/bms-1.jpg", "assets/bms-2.jpg", "assets/bms-3.jpg"],
-    tags: ["PCB Design", "Battery Management", "Automotive", "KiCAD"]
+    images: ["assets/bms-1.jpeg", "assets/bms-2.jpeg", "assets/bms-3.jpg"],
+    tags: ["Electronics", "Automotive", "Industrial IoT"]
   },
   {
     id: "portable-electrostimulation",
     title: "Portable Electrostimulation Device & Cell Culture Monitoring",
     category: "Embedded Systems / Bioengineering",
-    description: "Diseño e implementación de un dispositivo portátil de electroestimulación y monitorización continua de cultivos celulares. El proyecto incluye el diseño de la PCB en KiCAD y la programación del microcontrolador nRF5340 utilizando Zephyr OS y comunicación SPI con el DAC63204.",
-    images: ["assets/TFG.jpg"],
-    tags: ["KiCAD", "nRF5340", "Zephyr OS", "SPI", "DAC63204", "Bioengineering"]
+    description: "Diseño e implementación de un dispositivo portátil de electroestimulación y monitorización continua de cultivos celulares. El proyecto incluye el diseño de la PCB en KiCAD y la programación del microcontrolador nRF5340 utilizando Zephyr OS y comunicación SPI con el DAC63204. Optimizado para aplicaciones de regeneración tisular, integrando electrónica avanzada para permitir experimentos eficientes y de bajo consumo energético.",
+    images: ["assets/TFG.png"],
+    tags: ["Electronics", "Bioengineering"]
   },
   {
     id: "nrf5340-microcontroller-update",
     title: "System Update to nRF5340 Microcontroller",
     category: "Embedded Firmware",
     description: "Proyecto de actualización e integración hardware/firmware para migrar un sistema basado previamente en la arquitectura nRF52 hacia el nuevo microcontrolador dual-core nRF5340, optimizando el rendimiento y capacidades de procesamiento.",
-    images: ["assets/nrf53.jpg"],
-    tags: ["nRF5340", "nRF52", "Microcontrollers", "Embedded Systems", "Firmware Migration"]
+    images: ["assets/nrf53.png"],
+    tags: ["Electronics", "Bioengineering"]
   },
   {
     id: "electronic-cardiograph",
     title: "Design and Development of an Electronic Cardiograph",
     category: "Bioengineering / Analog Electronics",
-    description: "Dispositivo médico para la captación e interpretación de señales electrocardiográficas. Utiliza etapas de condensadores para estabilizar la señal captada por los electrodos e implementa técnicas de filtrado electrónico para obtener una señal clara y precisa.",
+    description: "Dispositivo médico para la captación e interpretación de señales electrocardiográficas. Utiliza etapas de condensadores para estabilizar la señal captada por los electrodos e implementa técnicas de filtrado electrónico para obtener una señal clara y precisa. Optimizado para futuras aplicaciones en monitorización médica portátil y de alta fiabilidad.",
     images: ["assets/ECG.png"],
-    tags: ["Medical Devices", "Signal Processing", "Analog Filtering", "ECG", "Bioelectronics"]
+    tags: ["Electronics", "Bioengineering"]
   },
   {
     id: "compressor-monitoring-system",
-    title: "Sistema de Monitorización de Compresores y Gemelo Digital",
+    title: "Gemelo Digital para la monitorización de compresores de frío",
     category: "Industrial IoT / Digital Twin",
-    description: "Gemelo digital industrial desarrollado en colaboración con IFM Electronic. Supervisión en tiempo real de salas de compresores y bombas de calor mediante sensores de vibración, inductivos y de temperatura. Procesamiento de señales en edgeGateway y plataforma moneo cloud.",
-    images: ["assets/analisis-compresores-1.jpg", "assets/analisis-compresores-2.jpg"],
-    tags: ["Industrial IoT", "Digital Twin", "IFM Electronic", "moneo Cloud", "Condition Monitoring", "Predictive Maintenance"]
+    description: "Gemelo digital industrial desarrollado en colaboración con IFM Electronic. Supervisión en tiempo real de salas de compresores y bombas de calor mediante sensores de vibración, inductivos y de temperatura. Procesamiento de señales en edgeGateway y plataforma moneo cloud, ofreciendo indicadores de salud de maquinaria, detección de holguras/fatiga, análisis de tendencias y gestión automatizada de alarmas de mantenimiento.",
+    images: ["assets/analisis-compresores-1.jpg", "assets/analisis-compresores-2.png"],
+    tags: ["Industrial IoT", "Digital Twin"]
   },
   {
     id: "wine-fermentation-monitoring",
-    title: "Gemelo Digital para Monitorización de Fermentación",
+    title: "Gemelo Digital para la monitorización de fermentación de vino y cava",
     category: "Industrial IoT / Food & Beverage",
-    description: "Gemelo digital para la supervisión continua en tiempo real de la fermentación en depósitos isobáricos, desarrollado en colaboración con IFM Electronic. Sistema alimentado por sensores de proceso para la lectura de variables críticas (temperatura, presión, pH, densidad).",
+    description: "Gemelo digital para la supervisión continua en tiempo real de la fermentación en depósitos isobáricos, desarrollado en colaboración con IFM Electronic. Sistema alimentado por sensores de proceso para la lectura de variables críticas (temperatura, presión, pH, densidad y caudales de refrigeración/CO2). Ofrece vistas generales y detalladas en plataforma cloud, reglas de supervisión y gestión de alertas tempranas.",
     images: [
-      "assets/fermentacion-vino-1.jpg",
-      "assets/fermentacion-vino-2.jpg",
-      "assets/fermentacion-vino-3.jpg",
-      "assets/fermentacion-vino-4.jpg",
-      "assets/fermentacion-vino-5.jpg"
+      "assets/fermentacion-vino-1.png",
+      "assets/fermentacion-vino-2.png",
+      "assets/fermentacion-vino-3.png",
+      "assets/fermentacion-vino-4.png",
+      "assets/fermentacion-vino-5.png"
     ],
-    tags: ["Industrial IoT", "Digital Twin", "IFM Electronic", "moneo Cloud", "Process Control", "Smart Industry"]
+    tags: ["Industrial IoT", "Digital Twin"]
   },
   {
     id: "lung-cancer-detection",
     title: "Algoritmo de Detección de Cáncer de Pulmón en Radiografías",
     category: "AI / Medical Imaging",
     description: "Desarrollo y entrenamiento de un algoritmo de visión por computador capaz de identificar patologías de cáncer de pulmón a partir de imágenes de radiografía de tórax, alcanzando una precisión (accuracy) del 86%.",
-    images: ["assets/pulmon-1.jpg", "assets/pulmon-2.jpg", "assets/pulmon-3.jpg"],
-    tags: ["Artificial Intelligence", "Machine Learning", "Medical Imaging", "Computer Vision", "X-Ray Analysis"]
+    images: ["assets/pulmon-1.png", "assets/pulmon-2.png"],
+    tags: ["Artificial Intelligence", "Bioengineering"]
   },
   {
     id: "tac-segmentation-3d-printing",
     title: "Segmentación de TACs y Extracción de Volumen para Impresión 3D",
     category: "3D Medical Modeling",
     description: "Procesamiento y segmentación de tomografías axial computarizadas (TAC) mediante el software 3D Slicer para la extracción de modelos volumétricos tridimensionales orientados a planificación quirúrgica e impresión 3D anatómica.",
-    images: ["assets/tac-1.jpg", "assets/tac-2.jpg"],
-    tags: ["3D Slicer", "TAC Segmentation", "3D Printing", "Biomedical Modeling", "DICOM"]
+    images: ["assets/tac-1.jpeg"],
+    tags: ["Artificial Intelligence", "Bioengineering"]
+  },
+  {
+    id: "trabajo-micro-nano",
+    title: "Inhalación de Nanopartículas para el tratamiento de enfermedades",
+    category: "bibliografico",
+    description: "Trabajo bibliográfico sobre los medicamentos que se administran en forma de nanopartículas y los diversos mecanismos de formación que hay de las mismas: buckybola, nanofrecuencias, evaporación...",
+    images: ["assets/micro-nano.png"],
+    tags: ["Bioengineering"]
+  },
+  {
+    id: "trabajo-IH",
+    title: "Diseño de una unidad de escuela infantil y primaria intrahospitalaria con acuario tropical.",
+    category: "BIM",
+    description: "Trabajo en BIM sobre Revit acerca del diseño de una escuela intrahospitalaria. El mayor reto para este proyecto fue la no existencia de una normativa específica, sino la necesidad de contrastar la normativa vigente para poder elaborar una instalación que cumpla con todos los requisitos. Además del diseño arquitectónico, se han calculated y trazado las instalaciones eléctricas, de fontanería y saneamiento. La inclusión de un acuario tropical busca una forma simpática de introducir un elemento de gran consumo eléctrico.",
+    images: [
+      "assets/trabajo-IH-1.png",
+      "assets/trabajo-IH-2.png",
+      "assets/trabajo-IH-3.png"
+    ],
+    tags: ["BIM", "Bioengineering"]
   }
 ];
 

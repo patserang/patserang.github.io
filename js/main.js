@@ -130,7 +130,7 @@ const experienceData = {
     },
     mirafutura: {
         title: "Responsable de Digitalización e I+D — Mirafutura Ingeniería S.L.",
-        date: "Enero 2025 - Actualidad",
+        date: "Enero 2025 - Julio 2026",
         description: "En diciembre me llamaron desde Mirafutura: habían visto mi CV y tenían una oportunidad en su departamento de digitalización. Fueron muy claros desde el minuto uno: eran una empresa 100% industrial, sin apenas experiencia en digitalización, y buscaban a alguien polivalente que pudiera guiar esos proyectos casi desde cero. Echando a un lado el vértigo que me dio la gran responsabilidad que me querían asignar, acepté el reto y entré como ingeniera de proyectos. Tras el éxito de los primeros, me ascendieron a responsable del departamento. Desde entonces he llamado a la puerta de más de 10 pymes con proyectos de digitalización e IA, cerrando 6 y con otros 5 en marcha, apoyándome en contenido propio de promoción para abrir puertas antes de descolgar el teléfono. Lidero cada proyecto de principio a fin, desde analizar los flujos de una fábrica hasta dejarla sensorizada dentro de su propia hoja de ruta de Industria 4.0, y cuando hace falta financiación, gestiono la documentación para que mis clientes consigan ayudas de la Junta de Extremadura."
     },
     arus: {

@@ -121,7 +121,7 @@ window.addEventListener('scroll', updateScrollEffects);
 window.addEventListener('load', updateScrollEffects);
 updateScrollEffects();
 
-// Información completa de la trayectoria profesional[cite: 1]
+// Información completa de la trayectoria profesional
 const experienceData = {
     siguiente: {
         title: "Próxima oportunidad",
@@ -284,7 +284,7 @@ const terminalProjectsData = [
     id: "trabajo-IH",
     title: "Diseño de una unidad de escuela infantil y primaria intrahospitalaria con acuario tropical.",
     category: "BIM",
-    description: "Trabajo en BIM sobre Revit acerca del diseño de una escuela intrahospitalaria. El mayor reto para este proyecto fue la no existencia de una normativa específica, sino la necesidad de contrastar la normativa vigente para poder elaborar una instalación que cumpla con todos los requisitos. Además del diseño arquitectónico, se han calculated y trazado las instalaciones eléctricas, de fontanería y saneamiento. La inclusión de un acuario tropical busca una forma simpática de introducir un elemento de gran consumo eléctrico.",
+    description: "Trabajo en BIM sobre Revit acerca del diseño de una escuela intrahospitalaria. El mayor reto para este proyecto fue la no existencia de una normativa específica, sino la necesidad de contrastar la normativa vigente para poder elaborar una instalación que cumpla con todos los requisitos. Además del diseño arquitectónico, se han calculado y trazado las instalaciones eléctricas, de fontanería y saneamiento. La inclusión de un acuario tropical busca una forma simpática de introducir un elemento de gran consumo eléctrico.",
     images: [
       "assets/trabajo-IH-1.png",
       "assets/trabajo-IH-2.png",
@@ -297,6 +297,12 @@ const terminalProjectsData = [
 const screenContainer = document.getElementById('terminal-screen-content');
 let currentGalleryImages = [];
 let currentImageIndex = 0;
+
+function renderTagLinks(tags) {
+    return tags
+        .map(tag => `<span class="tag" style="cursor: pointer;" onclick="renderTagList('${tag}')">[${tag}]</span>`)
+        .join('');
+}
 
 function renderHome() {
     if (!screenContainer) return;
@@ -336,21 +342,50 @@ function renderProjectList() {
     screenContainer.innerHTML = html;
 }
 
-function renderProjectDetail(index) {
+function renderTagList(tag) {
     if (!screenContainer) return;
-    const proj = terminalProjectsData[index];
-    const tagList = proj.tags ? proj.tags.join(', ') : '';
+
+    const matches = terminalProjectsData
+        .map((proj, idx) => ({ proj, idx }))
+        .filter(({ proj }) => proj.tags.includes(tag));
+
+    let html = `
+        <div class="terminal-screen">
+            <p style="color: var(--neon-purple); margin-bottom: 0.5rem;">[TAG: ${tag}]</p>
+            <p style="font-size: 0.85rem; opacity: 0.85; margin-bottom: 1rem;">${matches.length} proyecto(s) con este tag:</p>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem;">
+    `;
+
+    matches.forEach(({ proj, idx }) => {
+        html += `<div style="cursor: pointer; padding: 0.4rem 0.6rem; background: rgba(91,42,98,0.12); border-radius: 6px; border: 1px solid var(--border-color); transition: background 0.2s ease;" onclick="renderProjectDetail(${idx})">
+            <span style="color: var(--neon-purple); font-weight: bold;">[${idx + 1}]</span> ${proj.title}
+        </div>`;
+    });
+
+    html += `</div>
+            <div class="terminal-nav-buttons">
+                <button class="terminal-action-btn" onclick="renderHome()">Reiniciar</button>
+            </div>
+        </div>
+    `;
+    screenContainer.innerHTML = html;
+}
+
+function renderProjectDetail(key) {
+    const proj = terminalProjectsData[key];
+    if (!proj) return;
+
     screenContainer.innerHTML = `
         <div class="terminal-screen">
-            <div style="background: rgba(91, 42, 98, 0.15); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.2rem;">
+            <div style="background: rgba(91, 42, 98, 0.12); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.2rem;">
                 <h4 style="margin: 0 0 0.3rem 0; color: var(--text-lavender);">${proj.title}</h4>
-                <span style="font-size: 0.75rem; color: var(--neon-purple); display: block; margin-bottom: 0.8rem;">[${proj.category}] — Tags: ${tagList}</span>
+                <div style="display: flex; flex-wrap: wrap; gap: 0 0.8rem;">${renderTagLinks(proj.tags)}</div>
                 <p style="margin: 0; font-size: 0.85rem; opacity: 0.85; line-height: 1.5;">${proj.description}</p>
             </div>
             <div class="terminal-nav-buttons" style="margin-top: 1rem;">
                 <button class="terminal-action-btn" onclick="renderHome()">Reiniciar</button>
                 <button class="terminal-action-btn" onclick="renderProjectList()">Volver al listado</button>
-                <button class="terminal-action-btn" onclick="renderGallery(${index})" style="border-color: var(--neon-purple);">Ver galería de fotos (${proj.images.length})</button>
+                <button class="terminal-action-btn" onclick="renderGallery(${key})" style="border-color: var(--neon-purple);">Ver galería de fotos</button>
             </div>
         </div>
     `;
